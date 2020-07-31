@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Static Code Analysis</string>
+    <string name="title_feature_dashboard">Dashboard</string>
+</resources>
