@@ -1,10 +1,22 @@
-# Gradle Kotlin DSL, ktLint, detekt, Git Hooks Sample
+# Boilerplate for creating project with MVVM, Dagger Hilt, Dynamic Feture Modules
 
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.72-blue.svg)](https://kotlinlang.org)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
-Sample boiler plate code to implement Kotlin DSL, ktlint, detekt and Git Hooks to app on app, library and dynamic feature module step by step with each commit. Also added git hooks using script below in ```.git\hooks``` folder with a excutable **pre-commit.sh** to turn simple text to excutable call ```chmod a+x pre-commit```
+
+This is a boilerplate code to use when ceating a project since not to repeat same process over again. Folders are created, dependies and libraries are set up
+to create a requirements when starting a new project.
+
+* Gradle Kotlin DSL is used for setting up gradle files
+* KtLint, Detekt, and Git Hooks is used for checking, and formatting code and validating code before commits.
+* Dagger Hilt, Dynamic Fetaure Modules with Navigation Components, ViewModel, Retrofit, Room, RxJava, Coroutines libraries are set up.
+* ```features``` and ```libraries``` folders are used to include android libraries and dynamic feature modules
+* In core module dagger hilt dependencies and ```@EntryPoint``` is created
+
+## Gradle Kotlin DSL, ktLint, detekt And Git Hooks Integration
+Kotlin DSL, ktlint, detekt and Git Hooks to app on app, library and dynamic feature module step by step with each commit.
+Also added git hooks using script below in ```.git\hooks``` folder with a excutable **pre-commit.sh** to turn simple text to excutable call ```chmod a+x pre-commit```
 
 ```
 #!/bin/sh
