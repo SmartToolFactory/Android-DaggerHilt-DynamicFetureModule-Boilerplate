@@ -49,20 +49,31 @@ android {
     sourceSets {
     }
 
-    dataBinding {
-        isEnabled = true
+    android.buildFeatures.dataBinding = true
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    dynamicFeatures = mutableSetOf(Modules.DynamicFM.DASHBOARD)
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    dynamicFeatures = mutableSetOf(Modules.DynamicFM.DYNAMIC_FEATURE)
 }
 
 dependencies {
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
+    implementation(project(Modules.AndroidLibrary.DOMAIN))
+    implementation(project(Modules.AndroidLibrary.DATA))
     implementation(project(Modules.AndroidLibrary.CORE))
 
     addAppModuleDependencies()
 
+//    testImplementation(project(Modules.AndroidLibrary.TEST_UTILS))
     addUnitTestDependencies()
     addInstrumentationTestDependencies()
 }

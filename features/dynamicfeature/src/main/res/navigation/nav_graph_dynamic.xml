@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:moduleName="dynamicfeature"
+    android:id="@id/nav_graph_dynamic"
+    app:startDestination="@id/myDynamicFeatureFragment">
+
+
+    <fragment
+        android:id="@+id/myDynamicFeatureFragment"
+        android:name="com.smarttoolfactory.dynamicfeature.MyDynamicFeatureFragment"
+        android:label="MyDynamicFeatureFragment"
+        tools:layout="@layout/fragment_dynamic_feature"/>
+</navigation>

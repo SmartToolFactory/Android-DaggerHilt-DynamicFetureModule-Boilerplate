@@ -50,7 +50,7 @@ object Deps {
     const val RX_JAVA = "io.reactivex.rxjava2:rxjava:${Version.RXJAVA_VERSION}"
 
     // RxAndroid
-    const val RX_ANDRIOD = "io.reactivex.rxjava2:rxandroid:${Version.RX_ANDROID_VERSION}"
+    const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:${Version.RX_ANDROID_VERSION}"
 
     // Coroutines
     const val COROUTINES_CORE =
@@ -87,7 +87,16 @@ object Deps {
     const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Version.GLIDE_VERSION}"
 
     // Preference Manager
-    const val PREFERENCE_MANAGER = "androidx.preference:preference-ktx:1.1.1"
+    const val PREFERENCE_MANAGER =
+        "androidx.preference:preference-ktx:${Version.PREFERENCE_MANAGER_VERSION}"
+
+    // Chucker
+    const val CHUCKER_DEBUG = "com.github.chuckerteam.chucker:library:${Version.CHUCKER_VERSION}"
+    const val CHUCKER_RELEASE = "com.github.chuckerteam.chucker:library-no-op:${Version.CHUCKER_VERSION}"
+
+    // Leak Canary
+    const val LEAK_CANARY =
+        "com.squareup.leakcanary:leakcanary-android:${Version.LEAK_CANARY_VERSION}"
 }
 
 object TestDeps {
@@ -109,7 +118,14 @@ object TestDeps {
         "androidx.test.ext:junit:${TestVersion.androidXTestExtKotlinRunnerVersion}"
 
     const val ANDROIDX_ESPRESSO =
-        "androidx.test.espresso:espresso-core${TestVersion.espressoVersion}"
+        "androidx.test.espresso:espresso-contrib:${TestVersion.espressoVersion}"
+
+    // MockWebServer
+    const val MOCK_WEB_SERVER =
+        "com.squareup.okhttp3:mockwebserver:${TestVersion.mockWebServerVersion}"
+
+    // Gson
+    const val GSON = "com.google.code.gson:gson:${Version.GSON_VERSION}"
 
     // MockK
     const val MOCK_K = "io.mockk:mockk:${TestVersion.mockKVersion}"
@@ -118,7 +134,7 @@ object TestDeps {
     const val TRUTH = "com.google.truth:truth:${TestVersion.truthVersion}"
 
     // Espresso
-    const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${TestVersion.espressoVersion}"
+//    const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${TestVersion.espressoVersion}"
 
     // Testing Navigation
     const val NAVIGATION_TEST =

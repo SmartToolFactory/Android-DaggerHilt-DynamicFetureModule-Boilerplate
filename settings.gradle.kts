@@ -3,5 +3,6 @@ include(
     ":libraries:core",
     ":libraries:data",
     ":libraries:domain",
-    ":features:feature_dashboard"
+    ":libraries:test-utils",
+    ":features:dynamicfeature"
 )

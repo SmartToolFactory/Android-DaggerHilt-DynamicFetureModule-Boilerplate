@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Static Code Analysis</string>
-    <string name="title_feature_dashboard">Dashboard</string>
+    <string name="app_name">Project Boilerplate Code</string>
+    <string name="title_dynamicfeature">Dynamic Feature</string>
 </resources>

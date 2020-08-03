@@ -34,30 +34,15 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(Deps.DAGGER_HILT_ANDROID)
     kapt(Deps.DAGGER_HILT_COMPILER)
 
-    // Room
-    implementation(Deps.ROOM_RUNTIME)
-    // For Kotlin use kapt instead of annotationProcessor
-    kapt(Deps.ROOM_COMPILER)
-    // optional - Kotlin Extensions and Coroutines support for Room
-    implementation(Deps.ROOM_KTX)
-    // optional - RxJava support for Room
-    implementation(Deps.ROOM_RXJAVA2)
-
     // RxJava
     implementation(Deps.RX_JAVA)
     // RxAndroid
-    implementation(Deps.RX_ANDRIOD)
+    implementation(Deps.RX_ANDROID)
 
     // Coroutines
     implementation(Deps.COROUTINES_CORE)
     implementation(Deps.COROUTINES_ANDROID)
 
-    // Retrofit
-    implementation(Deps.RETROFIT)
-    implementation(Deps.RETROFIT_GSON_CONVERTER)
-    implementation(Deps.RETROFIT_RX_JAVA2_ADAPTER)
-    // change base url runtime
-    implementation(Deps.RETROFIT_URL_MANAGER)
     // Gson
     implementation(Deps.GSON)
 }
@@ -66,14 +51,6 @@ fun DependencyHandler.addAppModuleDependencies() {
  * Adds dependencies to core module
  */
 fun DependencyHandler.addCoreModuleDependencies() {
-    addAppModuleDependencies()
-}
-
-/**
- * Adds core dependencies such as kotlin, appcompat, navigation and dagger-hilt to Dynamic
- * Feature modules
- */
-fun DependencyHandler.addDynamicFeatureModuleDependencies() {
     implementation(Deps.KOTLIN)
     implementation(Deps.ANDROIDX_CORE_KTX)
 
@@ -83,6 +60,40 @@ fun DependencyHandler.addDynamicFeatureModuleDependencies() {
     implementation(Deps.CONSTRAINT_LAYOUT)
     implementation(Deps.RECYCLER_VIEW)
     implementation(Deps.VIEWPAGER2)
+
+    // Lifecycle, LiveData, ViewModel
+    implementation(Deps.ARCH_LIFECYCLE)
+
+    // Dagger
+    implementation(Deps.DAGGER_HILT_ANDROID)
+    kapt(Deps.DAGGER_HILT_COMPILER)
+
+    // RxJava
+    implementation(Deps.RX_JAVA)
+    // RxAndroid
+    implementation(Deps.RX_ANDROID)
+
+    // Coroutines
+    implementation(Deps.COROUTINES_CORE)
+    implementation(Deps.COROUTINES_ANDROID)
+
+    // Gson
+    implementation(Deps.GSON)
+
+    // Leak Canary
+    debugImplementation(Deps.LEAK_CANARY)
+
+    // Chucker
+    debugImplementation(Deps.CHUCKER_DEBUG)
+}
+
+/**
+ * Adds core dependencies such as kotlin, appcompat, navigation and dagger-hilt to Dynamic
+ * Feature modules
+ */
+fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
+    implementation(Deps.KOTLIN)
+    implementation(Deps.ANDROIDX_CORE_KTX)
 
     // Lifecycle, LiveData, ViewModel
     implementation(Deps.ARCH_LIFECYCLE)
@@ -100,14 +111,12 @@ fun DependencyHandler.addDynamicFeatureModuleDependencies() {
     // RxJava
     implementation(Deps.RX_JAVA)
     // RxAndroid
-    implementation(Deps.RX_ANDRIOD)
+    implementation(Deps.RX_ANDROID)
 
     // Coroutines
     implementation(Deps.COROUTINES_CORE)
     implementation(Deps.COROUTINES_ANDROID)
-
 }
-
 
 /**
  * Adds Unit test dependencies
@@ -133,17 +142,40 @@ fun DependencyHandler.addUnitTestDependencies() {
     // Truth
     testImplementation(TestDeps.TRUTH)
 
+    // RxJava
+    testImplementation(Deps.RX_JAVA)
+    // RxAndroid
+    testImplementation(Deps.RX_ANDROID)
+
+    // Coroutines
+    testImplementation(Deps.COROUTINES_CORE)
+    testImplementation(Deps.COROUTINES_ANDROID)
 }
 
 fun DependencyHandler.addInstrumentationTestDependencies() {
+
     // AndroidX Test - Instrumented testing
     androidTestImplementation(TestDeps.ANDROIDX_JUNIT)
     // Espresso
     androidTestImplementation(TestDeps.ANDROIDX_ESPRESSO)
+    // MockWebServer
+    androidTestImplementation(TestDeps.MOCK_WEB_SERVER)
+    // Gson
+    androidTestImplementation(TestDeps.GSON)
+
     // MockK
     androidTestImplementation(TestDeps.MOCK_K)
     // Testing Navigation
     androidTestImplementation(TestDeps.NAVIGATION_TEST)
+
+    // RxJava
+    androidTestImplementation(Deps.RX_JAVA)
+    // RxAndroid
+    androidTestImplementation(Deps.RX_ANDROID)
+
+    // Coroutines
+    androidTestImplementation(Deps.COROUTINES_CORE)
+    androidTestImplementation(Deps.COROUTINES_ANDROID)
 }
 
 /*
@@ -165,6 +197,9 @@ private fun DependencyHandler.kapt(dependencyNotation: Any): Dependency? =
 
 private fun DependencyHandler.testImplementation(dependencyNotation: Any): Dependency? =
     add("testImplementation", dependencyNotation)
+
+private fun DependencyHandler.debugImplementation(dependencyNotation: Any): Dependency? =
+    add("debugImplementation", dependencyNotation)
 
 private fun DependencyHandler.testRuntimeOnly(dependencyNotation: Any): Dependency? =
     add("testRuntimeOnly", dependencyNotation)

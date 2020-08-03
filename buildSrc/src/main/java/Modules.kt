@@ -6,12 +6,13 @@ object Modules {
         const val CORE = ":libraries:core"
         const val DATA = ":libraries:data"
         const val DOMAIN = ":libraries:domain"
+        const val TEST_UTILS = ":libraries:test-utils"
     }
 
     /**
      * Dynamic Feature Modules
      */
     object DynamicFM {
-        const val DASHBOARD = ":features:feature_dashboard"
+        const val DYNAMIC_FEATURE = ":features:dynamicfeature"
     }
 }

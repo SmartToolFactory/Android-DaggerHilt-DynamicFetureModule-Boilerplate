@@ -36,7 +36,7 @@ object Version {
     const val RECYCLER_VIEW_VERSION = "1.2.0-alpha01"
 
     // CardView
-    const val CARD_VERSION = "1.0.0"
+    const val CARD_VIEW_VERSION = "1.0.0"
 
     // ViewPager2
     const val VIEWPAGER2_VERSION = "1.1.0-alpha01"
@@ -76,8 +76,18 @@ object Version {
     // Glide
     const val GLIDE_VERSION = "4.9.0"
 
+    // Preference Manager
+    const val PREFERENCE_MANAGER_VERSION ="1.1.1"
+
     // Timber
     const val TIMBER_VERSION = "4.7.1"
+
+    // Chucker
+    const val CHUCKER_VERSION ="3.2.0"
+
+    // Leak Canary
+    const val LEAK_CANARY_VERSION = "2.4"
+
 }
 
 object TestVersion {
@@ -98,6 +108,9 @@ object TestVersion {
     // RoboElectric
     const val robolectricVersion = "4.3.1"
     const val rulesVersion = "1.0.1"
+
+    // MockWebServer
+    const val mockWebServerVersion = "3.7.0"
 
     // Truth Assertion
     const val truthVersion = "1.0.1"

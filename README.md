@@ -127,52 +127,7 @@ fun DependencyHandler.addCoreModuleDependencies() {
     implementation(Deps.KOTLIN)
     implementation(Deps.ANDROIDX_CORE_KTX)
 
-    // Support and Widgets
-    implementation(Deps.APPCOMPAT)
-    implementation(Deps.MATERIAL)
-    implementation(Deps.CONSTRAINT_LAYOUT)
-    implementation(Deps.RECYCLER_VIEW)
-    implementation(Deps.VIEWPAGER2)
-
-    // Lifecycle, LiveData, ViewModel
-    implementation(Deps.ARCH_LIFECYCLE)
-
-    // Navigation Components
-    implementation(Deps.NAVIGATION_FRAGMENT)
-    implementation(Deps.NAVIGATION_UI)
-    implementation(Deps.NAVIGATION_RUNTIME)
-    implementation(Deps.NAVIGATION_DYNAMIC)
-
-    // Dagger
-    implementation(Deps.DAGGER_HILT_ANDROID)
-    kapt(Deps.DAGGER_HILT_COMPILER)
-
-    // Room
-    implementation(Deps.ROOM_RUNTIME)
-    // For Kotlin use kapt instead of annotationProcessor
-    kapt(Deps.ROOM_COMPILER)
-    // optional - Kotlin Extensions and Coroutines support for Room
-    implementation(Deps.ROOM_KTX)
-    // optional - RxJava support for Room
-    implementation(Deps.ROOM_RXJAVA2)
-
-    // RxJava
-    implementation(Deps.RX_JAVA)
-    // RxAndroid
-    implementation(Deps.RX_ANDRIOD)
-
-    // Coroutines
-    implementation(Deps.COROUTINES_CORE)
-    implementation(Deps.COROUTINES_ANDROID)
-
-    // Retrofit
-    implementation(Deps.RETROFIT)
-    implementation(Deps.RETROFIT_GSON_CONVERTER)
-    implementation(Deps.RETROFIT_RX_JAVA2_ADAPTER)
-    // change base url runtime
-    implementation(Deps.RETROFIT_URL_MANAGER)
-    // Gson
-    implementation(Deps.GSON)
+    ...
 
 }
 ```
