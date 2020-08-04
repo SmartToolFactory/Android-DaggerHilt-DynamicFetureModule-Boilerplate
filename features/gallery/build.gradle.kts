@@ -48,7 +48,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     implementation(project(Modules.APP))
-//    implementation(project(Modules.AndroidLibrary.CORE))
+    implementation(project(Modules.AndroidLibrary.CORE))
 
     addBaseDynamicFeatureModuleDependencies()
 

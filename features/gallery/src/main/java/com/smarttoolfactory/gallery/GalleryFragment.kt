@@ -5,8 +5,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.smarttoolfactory.core.CoreDependency
+import com.smarttoolfactory.core.di.CoreModuleDependencies
+import com.smarttoolfactory.gallery.di.DaggerGalleryComponent
+import com.smarttoolfactory.gallery.model.GalleryDependency
+import dagger.hilt.android.EntryPointAccessors
+import javax.inject.Inject
 
 class GalleryFragment : Fragment() {
+
+    /**
+     * Injected from [CoreModule] using [CoreModuleDependencies] in core module with @Singleton scope
+     */
+    @Inject
+    lateinit var coreDependency: CoreDependency
+
+    /**
+     * Injected from [GalleryModule] with @FeatureScope
+     */
+    @Inject
+    lateinit var galleryDependency: GalleryDependency
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -14,5 +33,25 @@ class GalleryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_gallery, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        initCoreDependentInjection()
+        super.onCreate(savedInstanceState)
+    }
+
+    private fun initCoreDependentInjection() {
+
+        val coreModuleDependencies = EntryPointAccessors.fromApplication(
+            requireActivity().applicationContext,
+            CoreModuleDependencies::class.java
+        )
+
+        DaggerGalleryComponent.factory().create(
+            coreModuleDependencies,
+            requireActivity().application
+        )
+            .inject(this)
+
     }
 }
