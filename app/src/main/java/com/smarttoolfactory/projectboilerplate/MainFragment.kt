@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.smarttoolfactory.core.ui.base.DynamicInstallFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment : Fragment() {
+class MainFragment : DynamicInstallFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,7 +26,7 @@ class MainFragment : Fragment() {
         val btnGallery = view.findViewById<Button>(R.id.btnGallery)
 
         btnGallery.setOnClickListener {
-            findNavController().navigate(R.id.nav_graph_gallery)
+            navigateWithInstallMonitor(findNavController(), R.id.nav_graph_gallery)
         }
     }
 }

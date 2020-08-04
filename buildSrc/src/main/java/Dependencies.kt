@@ -92,7 +92,8 @@ object Deps {
 
     // Chucker
     const val CHUCKER_DEBUG = "com.github.chuckerteam.chucker:library:${Version.CHUCKER_VERSION}"
-    const val CHUCKER_RELEASE = "com.github.chuckerteam.chucker:library-no-op:${Version.CHUCKER_VERSION}"
+    const val CHUCKER_RELEASE =
+        "com.github.chuckerteam.chucker:library-no-op:${Version.CHUCKER_VERSION}"
 
     // Leak Canary
     const val LEAK_CANARY =
@@ -119,6 +120,10 @@ object TestDeps {
 
     const val ANDROIDX_ESPRESSO =
         "androidx.test.espresso:espresso-contrib:${TestVersion.espressoVersion}"
+
+    // Coroutines test
+    const val COROUTINES_TEST =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${TestVersion.coroutinesTestVersion}"
 
     // MockWebServer
     const val MOCK_WEB_SERVER =

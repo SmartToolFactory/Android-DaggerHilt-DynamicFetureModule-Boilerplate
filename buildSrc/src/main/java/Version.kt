@@ -109,6 +109,8 @@ object TestVersion {
     const val robolectricVersion = "4.3.1"
     const val rulesVersion = "1.0.1"
 
+    const val coroutinesTestVersion = "1.3.7"
+
     // MockWebServer
     const val mockWebServerVersion = "3.7.0"
 

@@ -14,6 +14,15 @@ to create a requirements when starting a new project.
 * ```features``` and ```libraries``` folders are used to include android libraries and dynamic feature modules
 * In core module dagger hilt dependencies and ```@EntryPoint``` is created
 
+###Note
+Change ```applicationId```in ```Version.AndroidVersion``` first
+
+```
+object AndroidVersion {
+    const val APPLICATION_ID = "com...."
+}
+```
+
 ## Gradle Kotlin DSL, ktLint, detekt And Git Hooks Integration
 Kotlin DSL, ktlint, detekt and Git Hooks to app on app, library and dynamic feature module step by step with each commit.
 Also added git hooks using script below in ```.git\hooks``` folder with a excutable **pre-commit.sh** to turn simple text to excutable call ```chmod a+x pre-commit```
@@ -131,3 +140,126 @@ fun DependencyHandler.addCoreModuleDependencies() {
 
 }
 ```
+
+## Modules
+
+*Module heierarchy*
+```
+     --> gallery module(dynamic featature module)
+     |    |
+     |  app module <-<----
+     |    |          |   |
+     -core module    |   |
+                     |   |
+      domain module<------
+           |             |
+      data module<--------
+                         |
+      test-utils module--
+
+```
+
+### Data Module
+Data module is empty to create repository, database and REST apis, or cache implementations. This layer only has RxJavaExtension class
+
+### Domain Module
+Domain module is for usecase or interactor to contatain business logic.
+
+### Core Module
+Core module can be used for containing libraries and other android related stuff. It only contains *CoreModule* and **CoreModuleDependencies**
+for adding *dependent components* to dynamic feature modules or app module if required
+
+### App Module
+Main app with Application that uses @DaggerHiltApp, you can build your app in this module
+
+### Dynamic Feature Modules
+Modules for seperating fetaure from app to prevent app being monolithic and having parallel gradle builds
+
+### test-utils Module
+Module ready for unit-testing with libraries and extensions to be used in every module
+add build.gradle file with ```testImplementation(project(Modules.AndroidLibrary.TEST_UTILS))```
+If needed put your json data into response.json which is located in test/resources in test-utils module
+
+## Dynamic Feature Navigation with Navigation Components
+
+To navigate with Dynamic Feature Modules main layout should contain a ```DynamicNavHostFragment```,
+```
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.dynamicfeatures.fragment.DynamicNavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
+```
+
+### Main navigation graph
+And navigation folder should contain navigation graph with
+
+    <!-- dynamic feature module-->
+    <include-dynamic
+        android:id="@+id/nav_graph_gallery"
+        android:name="com.smarttoolfactory.gallery"
+        app:graphResName="nav_graph_gallery"
+        app:moduleName="gallery">
+
+        <argument
+            android:name="count"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </include-dynamic>
+
+There are 3 important properties that should be carefully added to main graph for not receiving error
+
+1. id of the navigation,``` android:id="@+id/nav_graph_gallery"``, should be same with the dynamic feature id
+2. ```graphResName``` is the name of the navigation folder which is nav_graph_gallery.xml for this boilerplate
+3. module name should be exactly same name dynamic feature module is named.
+
+
+### Dynamic Feature Module navigation graph
+In nav_graph_gallery.xml
+
+```
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/nav_graph_gallery"
+    app:moduleName="gallery"
+    app:startDestination="@id/galleryFragment">
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.smarttoolfactory.gallery.GalleryFragment"
+        android:label="GalleryFragment"
+        tools:layout="@layout/fragment_gallery" />
+</navigation>
+```
+
+Make sure that
+
+1. id is same with the where this navigation is called except do not use *@+id/* since it creates new resource id, use *@id/*
+2. Add module name as in other navigation graph
+3. And start destination for first fragment to be displayed after navigating to this fragment.
+
+
+### Navigating with navController and InstallMonitor
+
+For navigation i used ```DynamicInstallFragment``` fragment which is inside *core module* since it provides
+
+```private val installMonitor = DynamicInstallMonitor()``` to track installation state of the dynamic feature module
+we navigate.
+
+Navigate to a dynamic feature module using
+
+```
+fun navigateWithInstallMonitor(navController: NavController, @IdRes destinationId: Int) {
+
+        navController.navigate(
+            destinationId,
+            null,
+            null,
+            DynamicExtras(installMonitor)
+        )
+}
+```
+which checks if the dynamic feature we wish to navigate is installed already ```installMonitor.isInstallRequired```
+and. If the dynamic feature is not installed returns states for status where you can take action.
+
+## Dagger Hilt and Dynamic Feature Module injections

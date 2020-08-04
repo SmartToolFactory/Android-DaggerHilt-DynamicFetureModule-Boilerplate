@@ -10,7 +10,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.FragmentComponent
 
 @InstallIn(FragmentComponent::class)
-@Module(includes = [CameraBindModule::class])
+@Module(includes = [GalleryBindModule::class])
 class GalleryModule {
 
     @Provides
@@ -19,7 +19,7 @@ class GalleryModule {
 
 @InstallIn(FragmentComponent::class)
 @Module
-abstract class CameraBindModule {
+abstract class GalleryBindModule {
     @Binds
     abstract fun bindContext(application: Application): Context
 }

@@ -43,8 +43,11 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(Deps.COROUTINES_CORE)
     implementation(Deps.COROUTINES_ANDROID)
 
-    // Gson
-    implementation(Deps.GSON)
+    // Leak Canary
+    debugImplementation(Deps.LEAK_CANARY)
+
+    // Chucker
+    debugImplementation(Deps.CHUCKER_DEBUG)
 }
 
 /**
@@ -56,13 +59,15 @@ fun DependencyHandler.addCoreModuleDependencies() {
 
     // Support and Widgets
     implementation(Deps.APPCOMPAT)
-    implementation(Deps.MATERIAL)
-    implementation(Deps.CONSTRAINT_LAYOUT)
-    implementation(Deps.RECYCLER_VIEW)
-    implementation(Deps.VIEWPAGER2)
 
     // Lifecycle, LiveData, ViewModel
     implementation(Deps.ARCH_LIFECYCLE)
+
+    // Navigation Components
+    implementation(Deps.NAVIGATION_FRAGMENT)
+    implementation(Deps.NAVIGATION_UI)
+    implementation(Deps.NAVIGATION_RUNTIME)
+    implementation(Deps.NAVIGATION_DYNAMIC)
 
     // Dagger
     implementation(Deps.DAGGER_HILT_ANDROID)
@@ -76,15 +81,6 @@ fun DependencyHandler.addCoreModuleDependencies() {
     // Coroutines
     implementation(Deps.COROUTINES_CORE)
     implementation(Deps.COROUTINES_ANDROID)
-
-    // Gson
-    implementation(Deps.GSON)
-
-    // Leak Canary
-    debugImplementation(Deps.LEAK_CANARY)
-
-    // Chucker
-    debugImplementation(Deps.CHUCKER_DEBUG)
 }
 
 /**
@@ -150,6 +146,14 @@ fun DependencyHandler.addUnitTestDependencies() {
     // Coroutines
     testImplementation(Deps.COROUTINES_CORE)
     testImplementation(Deps.COROUTINES_ANDROID)
+    // Coroutines Test
+    testImplementation(TestDeps.COROUTINES_TEST)
+
+    // MockWebServer
+    testImplementation(TestDeps.MOCK_WEB_SERVER)
+
+    // Gson
+    testImplementation(TestDeps.GSON)
 }
 
 fun DependencyHandler.addInstrumentationTestDependencies() {
