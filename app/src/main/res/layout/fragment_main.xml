@@ -7,16 +7,17 @@
     android:padding="8dp">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnDynamicFeature"
+        android:id="@+id/btnGallery"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dynamic Feature"
+        android:layout_marginBottom="32dp"
+        android:text="Dynamic Feature Gallery"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="32dp"
+        app:layout_goneMarginBottom="32dp"
         app:strokeColor="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

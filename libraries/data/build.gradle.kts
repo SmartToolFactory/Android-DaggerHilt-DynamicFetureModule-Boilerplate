@@ -37,20 +37,20 @@ android {
         jvmTarget = "1.8"
     }
 
-    sourceSets {
-
-        val sharedTestDir =
-            "${project(Modules.AndroidLibrary.TEST_UTILS).projectDir}/src/test-shared/java"
-
-        getByName("test") {
-            java.srcDir(sharedTestDir)
-        }
-
-        getByName("androidTest") {
-            java.srcDir(sharedTestDir)
-            resources.srcDir("${project(Modules.AndroidLibrary.TEST_UTILS).projectDir}/src/test/resources")
-        }
-    }
+//    sourceSets {
+//
+//        val sharedTestDir =
+//            "${project(Modules.AndroidLibrary.TEST_UTILS).projectDir}/src/test-shared/java"
+//
+//        getByName("test") {
+//            java.srcDir(sharedTestDir)
+//        }
+//
+//        getByName("androidTest") {
+//            java.srcDir(sharedTestDir)
+//            resources.srcDir("${project(Modules.AndroidLibrary.TEST_UTILS).projectDir}/src/test/resources")
+//        }
+//    }
 }
 
 dependencies {
@@ -91,7 +91,7 @@ dependencies {
     // Gson
     implementation(Deps.GSON)
 
-//    testImplementation(project(Modules.AndroidLibrary.TEST_UTILS))
+    testImplementation(project(Modules.AndroidLibrary.TEST_UTILS))
 
     addUnitTestDependencies()
     testImplementation(TestDeps.MOCK_WEB_SERVER)

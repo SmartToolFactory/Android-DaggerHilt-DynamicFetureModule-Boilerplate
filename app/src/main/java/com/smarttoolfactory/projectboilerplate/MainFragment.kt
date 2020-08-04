@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     override fun onCreateView(
@@ -21,10 +23,10 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val buttonDynamicFeature = view.findViewById<Button>(R.id.btnDynamicFeature)
+        val btnGallery = view.findViewById<Button>(R.id.btnGallery)
 
-        buttonDynamicFeature.setOnClickListener {
-            findNavController().navigate(R.id.nav_graph_dynamic)
+        btnGallery.setOnClickListener {
+            findNavController().navigate(R.id.nav_graph_gallery)
         }
     }
 }

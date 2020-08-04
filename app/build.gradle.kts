@@ -60,7 +60,7 @@ android {
         jvmTarget = "1.8"
     }
 
-    dynamicFeatures = mutableSetOf(Modules.DynamicFM.DYNAMIC_FEATURE)
+    dynamicFeatures = mutableSetOf(Modules.DynamicFM.GALLERY)
 }
 
 dependencies {

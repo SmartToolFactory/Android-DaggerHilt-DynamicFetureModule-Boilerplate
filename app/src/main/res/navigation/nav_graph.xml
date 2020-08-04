@@ -9,14 +9,18 @@
         android:id="@+id/mainFragment"
         android:name="com.smarttoolfactory.projectboilerplate.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main"/>
-
+        tools:layout="@layout/fragment_main" />
 
     <!-- dynamic feature module-->
     <include-dynamic
-        android:id="@+id/nav_graph_dynamic"
-        android:name="com.smarttoolfactory.dynamicfeature"
-        app:graphResName="nav_graph_dynamic"
-        app:moduleName="dynamicfeature">
+        android:id="@+id/nav_graph_gallery"
+        android:name="com.smarttoolfactory.gallery"
+        app:graphResName="nav_graph_gallery"
+        app:moduleName="gallery">
+
+        <argument
+            android:name="count"
+            android:defaultValue="0"
+            app:argType="integer" />
     </include-dynamic>
 </navigation>

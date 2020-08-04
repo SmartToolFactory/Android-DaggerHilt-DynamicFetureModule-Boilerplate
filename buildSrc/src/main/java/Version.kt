@@ -45,7 +45,7 @@ object Version {
     const val ARCH_LIFECYCLE_VERSION = "2.2.0"
 
     // Navigation Components
-    const val NAVIGATION_VERSION = "2.3.0-alpha01"
+    const val NAVIGATION_VERSION = "2.3.0"
 
     // Retrofit
     const val RETROFIT_VERSION = "2.8.1"

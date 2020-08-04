@@ -15,6 +15,9 @@ android {
     compileSdkVersion(AndroidVersion.COMPILE_SDK_VERSION)
 
     defaultConfig {
+
+        applicationId = "com.smarttoolfactory.gallery"
+
         minSdkVersion(AndroidVersion.MIN_SDK_VERSION)
         targetSdkVersion(AndroidVersion.TARGET_SDK_VERSION)
         versionCode = AndroidVersion.VERSION_CODE
@@ -45,7 +48,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     implementation(project(Modules.APP))
-    implementation(project(Modules.AndroidLibrary.CORE))
+//    implementation(project(Modules.AndroidLibrary.CORE))
 
     addBaseDynamicFeatureModuleDependencies()
 

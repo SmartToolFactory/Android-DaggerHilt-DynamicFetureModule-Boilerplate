@@ -4,5 +4,5 @@ include(
     ":libraries:data",
     ":libraries:domain",
     ":libraries:test-utils",
-    ":features:dynamicfeature"
+    ":features:gallery"
 )
