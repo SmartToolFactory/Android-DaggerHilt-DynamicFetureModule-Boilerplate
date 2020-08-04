@@ -22,7 +22,9 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(Deps.VIEWPAGER2)
 
     // Lifecycle, LiveData, ViewModel
-    implementation(Deps.ARCH_LIFECYCLE)
+    implementation(Deps.LIFECYCLE_LIVEDATA_KTX)
+    implementation(Deps.LIFECYCLE_VIEWMODEL_KTX)
+    implementation(Deps.LIFECYCLE_EXTENSIONS)
 
     // Navigation Components
     implementation(Deps.NAVIGATION_FRAGMENT)
@@ -61,7 +63,9 @@ fun DependencyHandler.addCoreModuleDependencies() {
     implementation(Deps.APPCOMPAT)
 
     // Lifecycle, LiveData, ViewModel
-    implementation(Deps.ARCH_LIFECYCLE)
+    implementation(Deps.LIFECYCLE_LIVEDATA_KTX)
+    implementation(Deps.LIFECYCLE_VIEWMODEL_KTX)
+    implementation(Deps.LIFECYCLE_EXTENSIONS)
 
     // Navigation Components
     implementation(Deps.NAVIGATION_FRAGMENT)
@@ -85,14 +89,17 @@ fun DependencyHandler.addCoreModuleDependencies() {
 
 /**
  * Adds core dependencies such as kotlin, appcompat, navigation and dagger-hilt to Dynamic
- * Feature modules
+ * Feature modules.
+ *
  */
 fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
     implementation(Deps.KOTLIN)
     implementation(Deps.ANDROIDX_CORE_KTX)
 
     // Lifecycle, LiveData, ViewModel
-    implementation(Deps.ARCH_LIFECYCLE)
+    implementation(Deps.LIFECYCLE_LIVEDATA_KTX)
+    implementation(Deps.LIFECYCLE_VIEWMODEL_KTX)
+    implementation(Deps.LIFECYCLE_EXTENSIONS)
 
     // Navigation Components
     implementation(Deps.NAVIGATION_FRAGMENT)

@@ -63,8 +63,25 @@ dependencies {
     implementation(Deps.COROUTINES_CORE)
     implementation(Deps.COROUTINES_ANDROID)
 
-    testImplementation(TestDeps.ANDROIDX_CORE_KTX)
-    testImplementation(TestDeps.ANDROIDX_CORE_TESTING)
+    implementation(TestDeps.ANDROIDX_CORE_KTX)
+    implementation(TestDeps.ANDROIDX_CORE_TESTING)
 
-    testImplementation(Deps.GSON)
+    // Lifecycle, LiveData, ViewModel
+    implementation(Deps.LIFECYCLE_LIVEDATA_KTX)
+    implementation(Deps.LIFECYCLE_VIEWMODEL_KTX)
+    implementation(Deps.LIFECYCLE_EXTENSIONS)
+
+    // GSon
+    implementation(Deps.GSON)
+
+    // Coroutines
+    implementation(Deps.COROUTINES_CORE)
+    implementation(Deps.COROUTINES_ANDROID)
+    // Coroutines Test
+    implementation(TestDeps.COROUTINES_TEST)
+
+    // MockWebServer
+    implementation(TestDeps.MOCK_WEB_SERVER)
+
+
 }

@@ -58,7 +58,7 @@ dependencies {
     implementation(Deps.CONSTRAINT_LAYOUT)
 
     // Lifecycle, LiveData, ViewModel
-    implementation(Deps.ARCH_LIFECYCLE)
+    implementation(Deps.LIFECYCLE_EXTENSIONS)
 
     addUnitTestDependencies()
 

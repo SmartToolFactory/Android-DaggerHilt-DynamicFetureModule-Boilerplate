@@ -20,9 +20,14 @@ object Deps {
     // ViewPager2
     const val VIEWPAGER2 = "androidx.viewpager2:viewpager2:${Version.VIEWPAGER2_VERSION}"
 
-    // ViewModel and LiveData
-    const val ARCH_LIFECYCLE =
-        "androidx.lifecycle:lifecycle-extensions:${Version.ARCH_LIFECYCLE_VERSION}"
+    // Lifecycle, ViewModel and LiveData
+    const val LIFECYCLE_LIVEDATA_KTX =
+        "androidx.lifecycle:lifecycle-livedata-ktx:${Version.LIFECYCLE_VERSION}"
+    const val LIFECYCLE_VIEWMODEL_KTX =
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.LIFECYCLE_VERSION}"
+    const val LIFECYCLE_EXTENSIONS =
+        "androidx.lifecycle:lifecycle-extensions:${Version.LIFECYCLE_VERSION}"
+
 
     // Navigation Components
     const val NAVIGATION_FRAGMENT =

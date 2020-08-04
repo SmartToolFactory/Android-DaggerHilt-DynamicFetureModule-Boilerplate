@@ -42,7 +42,7 @@ object Version {
     const val VIEWPAGER2_VERSION = "1.1.0-alpha01"
 
     // Architecture MVVM & LiveData
-    const val ARCH_LIFECYCLE_VERSION = "2.2.0"
+    const val LIFECYCLE_VERSION = "2.2.0"
 
     // Navigation Components
     const val NAVIGATION_VERSION = "2.3.0"
