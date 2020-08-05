@@ -21,5 +21,4 @@ interface GalleryComponent {
             @BindsInstance application: Application
         ): GalleryComponent
     }
-
 }

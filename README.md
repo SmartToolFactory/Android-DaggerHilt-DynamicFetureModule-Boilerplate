@@ -263,3 +263,65 @@ which checks if the dynamic feature we wish to navigate is installed already ```
 and. If the dynamic feature is not installed returns states for status where you can take action.
 
 ## Dagger Hilt and Dynamic Feature Module injections
+
+### Application
+Application class only need to use  ```@HiltAndroidApp``` annotation
+
+### Activity
+Activity should use ```@AndroidEntryPoint```annotation
+
+### Core Module
+Core module should have provision methods for dependecies to be injected in core module to any other dependent module
+
+```
+@EntryPoint
+@InstallIn(ApplicationComponent::class)
+interface CoreModuleDependencies {
+
+    /*
+       Provision methods to provide dependencies to components that depend on this component
+     */
+    fun coreDependency(): CoreDependency
+
+}
+```
+
+### Dynamic Feature Modules
+
+Modules that depend on core module shoud create a component, that depends on core module, with
+
+```
+@Component(
+    dependencies = [CoreModuleDependencies::class],
+    modules = [GalleryModule::class]
+)
+interface GalleryComponent {
+
+    fun inject(galleryFragment: GalleryFragment)
+
+    @Component.Factory
+    interface Factory {
+        fun create(
+            coreModuleDependencies: CoreModuleDependencies,
+            @BindsInstance application: Application
+        ): GalleryComponent
+    }
+}
+```
+
+And creat this component in a ```Fragment``` or ```Activity``` using
+
+```
+        val coreModuleDependencies = EntryPointAccessors.fromApplication(
+            requireActivity().applicationContext,
+            CoreModuleDependencies::class.java
+        )
+
+        DaggerGalleryComponent.factory().create(
+            coreModuleDependencies,
+            requireActivity().application
+        )
+            .inject(this)
+```
+
+🔥 ```EntryPointAccessors.fromApplication``` depends on which component ```CoreModule``` uses ```@InstallIn``` with
