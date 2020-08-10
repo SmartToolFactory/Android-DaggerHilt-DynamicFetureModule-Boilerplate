@@ -1,6 +1,6 @@
 object PluginVersion {
     const val KOTLIN_VERSION = "1.3.72"
-    const val GRADLE_VERSION = "4.1.0-beta04"
+    const val GRADLE_VERSION = "4.1.0-beta05"
 
     const val NAVIGATION_SAFE_ARGS = "2.3.0-alpha06"
     const val KTLINT_VERSION = "9.3.0"
