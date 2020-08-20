@@ -58,8 +58,8 @@ dependencies {
     implementation(Deps.KOTLIN)
     implementation(Deps.ANDROIDX_CORE_KTX)
 
-    implementation(Deps.RX_JAVA)
-    implementation(Deps.RX_ANDROID)
+    implementation(Deps.RX_JAVA3)
+    implementation(Deps.RX_JAVA3_ANDROID)
     implementation(Deps.COROUTINES_CORE)
     implementation(Deps.COROUTINES_ANDROID)
 

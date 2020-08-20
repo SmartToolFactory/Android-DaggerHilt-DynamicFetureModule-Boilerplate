@@ -1,6 +1,6 @@
 object PluginVersion {
-    const val KOTLIN_VERSION = "1.3.72"
-    const val GRADLE_VERSION = "4.1.0-beta05"
+    const val KOTLIN_VERSION = "1.4.0"
+    const val GRADLE_VERSION = "4.1.0-rc01"
 
     const val NAVIGATION_SAFE_ARGS = "2.3.0-alpha06"
     const val KTLINT_VERSION = "9.3.0"
@@ -60,15 +60,18 @@ object Version {
     const val GSON_VERSION = "2.8.4"
 
     // Room
-    const val ROOM_VERSION = "2.2.5"
+    const val ROOM_VERSION = "2.3.0-alpha02"
 
     // Dagger
     const val DAGGER_VERSION = "2.28"
     const val DAGGER_HILT_VERSION = "2.28.1-alpha"
 
-    // RxJava
-    const val RXJAVA_VERSION = "2.2.19"
-    const val RX_ANDROID_VERSION = "2.1.1"
+    // RxJava2
+    const val RXJAVA2_VERSION = "2.2.19"
+    const val RX_JAVA2_ANDROID_VERSION = "2.1.1"
+
+    // RxJava3
+    const val RXJAVA3_VERSION = "3.0.5"
 
     // Coroutines
     const val COROUTINES_VERSION = "1.3.5"

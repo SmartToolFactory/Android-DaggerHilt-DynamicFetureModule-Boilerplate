@@ -71,12 +71,12 @@ dependencies {
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation(Deps.ROOM_KTX)
     // optional - RxJava support for Room
-    implementation(Deps.ROOM_RXJAVA2)
+    implementation(Deps.ROOM_RXJAVA3)
 
     // RxJava
-    implementation(Deps.RX_JAVA)
+    implementation(Deps.RX_JAVA3)
     // RxAndroid
-    implementation(Deps.RX_ANDROID)
+    implementation(Deps.RX_JAVA3_ANDROID)
 
     // Coroutines
     implementation(Deps.COROUTINES_CORE)
@@ -85,7 +85,7 @@ dependencies {
     // Retrofit
     implementation(Deps.RETROFIT)
     implementation(Deps.RETROFIT_GSON_CONVERTER)
-    implementation(Deps.RETROFIT_RX_JAVA2_ADAPTER)
+    implementation(Deps.RETROFIT_RX_JAVA3_ADAPTER)
     // change base url runtime
     implementation(Deps.RETROFIT_URL_MANAGER)
     // Gson

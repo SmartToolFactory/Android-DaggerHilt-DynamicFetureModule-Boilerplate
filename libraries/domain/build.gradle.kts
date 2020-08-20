@@ -67,9 +67,9 @@ dependencies {
     kapt(Deps.DAGGER_HILT_COMPILER)
 
     // RxJava
-    implementation(Deps.RX_JAVA)
+    implementation(Deps.RX_JAVA3)
     // RxAndroid
-    implementation(Deps.RX_ANDROID)
+    implementation(Deps.RX_JAVA3_ANDROID)
 
     // Coroutines
     implementation(Deps.COROUTINES_CORE)

@@ -37,9 +37,9 @@ fun DependencyHandler.addAppModuleDependencies() {
     kapt(Deps.DAGGER_HILT_COMPILER)
 
     // RxJava
-    implementation(Deps.RX_JAVA)
+    implementation(Deps.RX_JAVA3)
     // RxAndroid
-    implementation(Deps.RX_ANDROID)
+    implementation(Deps.RX_JAVA3_ANDROID)
 
     // Coroutines
     implementation(Deps.COROUTINES_CORE)
@@ -78,9 +78,9 @@ fun DependencyHandler.addCoreModuleDependencies() {
     kapt(Deps.DAGGER_HILT_COMPILER)
 
     // RxJava
-    implementation(Deps.RX_JAVA)
+    implementation(Deps.RX_JAVA3)
     // RxAndroid
-    implementation(Deps.RX_ANDROID)
+    implementation(Deps.RX_JAVA3_ANDROID)
 
     // Coroutines
     implementation(Deps.COROUTINES_CORE)
@@ -112,9 +112,9 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
     kapt(Deps.DAGGER_HILT_COMPILER)
 
     // RxJava
-    implementation(Deps.RX_JAVA)
+    implementation(Deps.RX_JAVA3)
     // RxAndroid
-    implementation(Deps.RX_ANDROID)
+    implementation(Deps.RX_JAVA3_ANDROID)
 
     // Coroutines
     implementation(Deps.COROUTINES_CORE)
@@ -146,9 +146,9 @@ fun DependencyHandler.addUnitTestDependencies() {
     testImplementation(TestDeps.TRUTH)
 
     // RxJava
-    testImplementation(Deps.RX_JAVA)
+    testImplementation(Deps.RX_JAVA3)
     // RxAndroid
-    testImplementation(Deps.RX_ANDROID)
+    testImplementation(Deps.RX_JAVA3_ANDROID)
 
     // Coroutines
     testImplementation(Deps.COROUTINES_CORE)
@@ -180,9 +180,9 @@ fun DependencyHandler.addInstrumentationTestDependencies() {
     androidTestImplementation(TestDeps.NAVIGATION_TEST)
 
     // RxJava
-    androidTestImplementation(Deps.RX_JAVA)
+    androidTestImplementation(Deps.RX_JAVA3)
     // RxAndroid
-    androidTestImplementation(Deps.RX_ANDROID)
+    androidTestImplementation(Deps.RX_JAVA3_ANDROID)
 
     // Coroutines
     androidTestImplementation(Deps.COROUTINES_CORE)

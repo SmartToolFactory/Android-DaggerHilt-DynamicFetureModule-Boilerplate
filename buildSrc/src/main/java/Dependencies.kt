@@ -20,6 +20,8 @@ object Deps {
     // ViewPager2
     const val VIEWPAGER2 = "androidx.viewpager2:viewpager2:${Version.VIEWPAGER2_VERSION}"
 
+
+
     // Lifecycle, ViewModel and LiveData
     const val LIFECYCLE_LIVEDATA_KTX =
         "androidx.lifecycle:lifecycle-livedata-ktx:${Version.LIFECYCLE_VERSION}"
@@ -51,11 +53,18 @@ object Deps {
     const val DAGGER_HILT_COMPILER =
         "com.google.dagger:hilt-android-compiler:${Version.DAGGER_HILT_VERSION}"
 
-    // RxJava
-    const val RX_JAVA = "io.reactivex.rxjava2:rxjava:${Version.RXJAVA_VERSION}"
+    // RxJava2
+    const val RX_JAVA2 = "io.reactivex.rxjava2:rxjava:${Version.RXJAVA2_VERSION}"
 
-    // RxAndroid
-    const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:${Version.RX_ANDROID_VERSION}"
+    // RxJava2 Android
+    const val RX_JAVA2_ANDROID =
+        "io.reactivex.rxjava2:rxandroid:${Version.RX_JAVA2_ANDROID_VERSION}"
+
+    // RxJava3
+    const val RX_JAVA3 = "io.reactivex.rxjava3:rxjava:${Version.RXJAVA3_VERSION}"
+    // RxJava3 Android
+    const val RX_JAVA3_ANDROID = "io.reactivex.rxjava3:rxandroid:${Version.RXJAVA3_VERSION}"
+
 
     // Coroutines
     const val COROUTINES_CORE =
@@ -68,6 +77,7 @@ object Deps {
     const val RETROFIT_GSON_CONVERTER =
         "com.squareup.retrofit2:converter-gson:${Version.RETROFIT_VERSION}"
     const val RETROFIT_RX_JAVA2_ADAPTER = "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0"
+    const val RETROFIT_RX_JAVA3_ADAPTER = "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
 
     // Retrofit change base url runtime
     const val RETROFIT_URL_MANAGER = "me.jessyan:retrofit-url-manager:1.4.0"
@@ -86,6 +96,7 @@ object Deps {
 
     // optional - RxJava support for Room
     const val ROOM_RXJAVA2 = "androidx.room:room-rxjava2:${Version.ROOM_VERSION}"
+    const val ROOM_RXJAVA3 = "androidx.room:room-rxjava3:${Version.ROOM_VERSION}"
 
     // glide
     const val GLIDE = "com.github.bumptech.glide:glide:${Version.GLIDE_VERSION}"
