@@ -13,9 +13,10 @@ to create a requirements when starting a new project.
 * Dagger Hilt, Dynamic Feature Modules with Navigation Components, ViewModel, Retrofit, Room, RxJava, Coroutines libraries adn dependencies are set up.
 * ```features``` and ```libraries``` folders are used to include android libraries and dynamic feature modules
 * In core module dagger hilt dependencies and ```@EntryPoint``` is created
+* test-utils module for shared folder for tes and androidTest folders, LiveDataObserver and FlowObserver.
 
-###Note
-Change ```applicationId```in ```Version.AndroidVersion``` first
+### Note
+Change ```applicationId```in ```Version.AndroidVersion```
 
 ```
 object AndroidVersion {
@@ -209,7 +210,7 @@ And navigation folder should contain navigation graph with
 
 There are 3 important properties that should be carefully added to main graph for not receiving error
 
-1. id of the navigation,``` android:id="@+id/nav_graph_gallery"``, should be same with the dynamic feature id
+1. id of the navigation,``` android:id="@+id/nav_graph_gallery"```, should be same with the dynamic feature id
 2. ```graphResName``` is the name of the navigation folder which is nav_graph_gallery.xml for this boilerplate
 3. module name should be exactly same name dynamic feature module is named.
 
@@ -325,3 +326,338 @@ And creat this component in a ```Fragment``` or ```Activity``` using
 ```
 
 🔥 ```EntryPointAccessors.fromApplication``` depends on which component ```CoreModule``` uses ```@InstallIn``` with
+
+## Testing
+
+
+### test-utils
+ ```test-shared``` folder contains common rules, and utilities for both ```test``` and ```androidTest``` for using
+ both with unit tests and integration test.
+
+```
+    sourceSets {
+
+        val sharedTestDir = "src/test-shared/java"
+
+        getByName("test") {
+            java.srcDir(sharedTestDir)
+        }
+
+        getByName("androidTest") {
+            java.srcDir(sharedTestDir)
+            resources.srcDir("src/test/resources")
+        }
+    }
+```
+
+### LiveDataObserver
+
+This class is observer for testing ```LiveData``` that emits more than one values and similar to RxJava ```TestObserver```.
+
+```
+class LiveDataTestObserver<T> constructor(
+    private val liveData: LiveData<T>
+) : Observer<T> {
+
+    init {
+        liveData.observeForever(this)
+    }
+
+    private val testValues = mutableListOf<T>()
+
+    override fun onChanged(t: T) {
+        if (t != null) testValues.add(t)
+    }
+
+    fun assertNoValues(): LiveDataTestObserver<T> {
+        if (testValues.isNotEmpty()) throw AssertionError(
+            "Assertion error with actual size ${testValues.size}"
+        )
+        return this
+    }
+
+    fun assertValueCount(count: Int): LiveDataTestObserver<T> {
+        if (count < 0) throw AssertionError(
+            "Assertion error! value count cannot be smaller than zero"
+        )
+        if (count != testValues.size) throw AssertionError(
+            "Assertion error! with expected $count while actual ${testValues.size}"
+        )
+        return this
+    }
+
+    fun assertValues(vararg predicates: T): LiveDataTestObserver<T> {
+        if (!testValues.containsAll(predicates.asList())) throw  AssertionError("Assertion error!")
+        return this
+    }
+
+    fun assertValues(predicate: (List<T>) -> Boolean): LiveDataTestObserver<T> {
+        predicate(testValues)
+        return this
+    }
+
+    fun values(predicate: (List<T>) -> Unit): LiveDataTestObserver<T> {
+        predicate(testValues)
+        return this
+    }
+
+    fun values(): List<T> {
+        return testValues
+    }
+
+    /**
+     * Removes this observer from the [LiveData] which was observing
+     */
+    fun dispose() {
+        liveData.removeObserver(this)
+    }
+
+    /**
+     * Clears data available in this observer and removes this observer from the [LiveData] which was observing
+     */
+    fun clear() {
+        testValues.clear()
+        dispose()
+    }
+}
+
+fun <T> LiveData<T>.test(): LiveDataTestObserver<T> {
+
+    val testObserver = LiveDataTestObserver(this)
+
+    // Remove this testObserver that is added in init block of TestObserver, and clears previous data
+    testObserver.clear()
+    observeForever(testObserver)
+
+    return testObserver
+}
+```
+
+### FlowTestObserver
+
+TestObserver with declarative assertion methods to test more than multiple states and values sequentaially.
+
+```
+class FlowTestObserver<T>(
+    private val coroutineScope: CoroutineScope,
+    private val flow: Flow<T>,
+    private val waitForDelay: Boolean = false
+) {
+    private val testValues = mutableListOf<T>()
+    private var error: Throwable? = null
+
+    private var isInitialized = false
+
+    private var isCompleted = false
+
+    private lateinit var job: Job
+
+
+    private suspend fun initializeAndJoin() {
+        job = createJob(coroutineScope)
+    }
+
+
+    private suspend fun initialize() {
+
+        if (!isInitialized) {
+            isInitialized = true
+
+            if (waitForDelay) {
+                try {
+                    withTimeout(Long.MAX_VALUE) {
+                        job = createJob(this)
+                    }
+                } catch (e: Exception) {
+                    isCompleted = false
+                }
+            } else {
+                initializeAndJoin()
+            }
+        }
+    }
+
+    private fun createJob(scope: CoroutineScope): Job {
+
+        val job = flow
+            .onStart {
+            }
+            .onCompletion {
+                isCompleted = true
+            }
+            .catch { throwable ->
+                error = throwable
+            }
+            .onEach {
+                testValues.add(it)
+            }
+            .launchIn(scope)
+
+        return job
+    }
+
+
+    suspend fun assertNoValues(): FlowTestObserver<T> {
+        initialize()
+        if (testValues.isNotEmpty()) throw AssertionError(
+            "Assertion error! Actual size ${testValues.size}"
+        )
+        return this
+    }
+
+    suspend fun assertValueCount(count: Int): FlowTestObserver<T> {
+        initialize()
+        if (count < 0) throw AssertionError(
+            "Assertion error! Value count cannot be smaller than zero"
+        )
+        if (count != testValues.size) throw AssertionError(
+            "Assertion error! Expected $count while actual ${testValues.size}"
+        )
+        return this
+    }
+
+    suspend fun assertValues(vararg values: T): FlowTestObserver<T> {
+        initialize()
+        if (!testValues.containsAll(values.asList()))
+            throw  AssertionError("Assertion error! At least one value does not match")
+        return this
+    }
+
+    suspend fun assertValues(predicate: (List<T>) -> Boolean): FlowTestObserver<T> {
+
+        initialize()
+
+        if (!predicate(testValues))
+            throw  AssertionError("Assertion error! At least one value does not match")
+        return this
+    }
+
+    suspend fun assertError(throwable: Throwable): FlowTestObserver<T> {
+
+        initialize()
+
+        val errorNotNull = exceptionNotNull()
+
+        if (!(errorNotNull::class.java == throwable::class.java &&
+                    errorNotNull.message == throwable.message)
+        )
+            throw AssertionError("Assertion Error! throwable: $throwable does not match $errorNotNull")
+        return this
+    }
+
+    suspend fun assertError(errorClass: Class<Throwable>): FlowTestObserver<T> {
+
+        initialize()
+
+        val errorNotNull = exceptionNotNull()
+
+        if (errorNotNull::class.java != errorClass)
+            throw  AssertionError("Assertion Error! errorClass $errorClass does not match ${errorNotNull::class.java}")
+        return this
+    }
+
+    suspend fun assertError(predicate: (Throwable) -> Boolean): FlowTestObserver<T> {
+
+        initialize()
+
+        val errorNotNull = exceptionNotNull()
+
+        if (!predicate(errorNotNull))
+            throw AssertionError("Assertion Error! Exception for $errorNotNull")
+        return this
+    }
+
+    suspend fun assertNoError(): FlowTestObserver<T> {
+
+        initialize()
+
+        if (error != null)
+            throw AssertionError("Assertion Error! Exception occurred $error")
+
+        return this
+    }
+
+    suspend fun assertNull(): FlowTestObserver<T> {
+
+        initialize()
+
+        testValues.forEach {
+            if (it != null) throw AssertionError("Assertion Error! There are more than one item that is not null")
+        }
+
+        return this
+    }
+
+    suspend fun assertComplete(): FlowTestObserver<T> {
+
+        initialize()
+
+        if (!isCompleted) throw AssertionError("Assertion Error! Job is not completed yet!")
+        return this
+    }
+
+    suspend fun assertNotComplete(): FlowTestObserver<T> {
+
+        initialize()
+
+        if (isCompleted) throw AssertionError("Assertion Error! Job is completed!")
+        return this
+    }
+
+    suspend fun values(predicate: (List<T>) -> Unit): FlowTestObserver<T> {
+        predicate(testValues)
+        return this
+    }
+
+    suspend fun values(): List<T> {
+
+        initialize()
+
+        return testValues
+    }
+
+
+    private fun exceptionNotNull(): Throwable {
+
+        if (error == null)
+            throw  AssertionError("There is no exception")
+
+        return error!!
+    }
+
+    fun dispose() {
+        job.cancel()
+    }
+}
+
+/**
+ * Creates a RxJava2 style test observer that uses `onStart`, `onEach`, `onCompletion`
+ *
+ * * Set waitForDelay true for testing delay.
+ *
+ * ###  Note: waiting for delay with a channel that sends values throw TimeoutCancellationException, don't use timeout with channel
+ * TODO Fix channel issue
+ */
+suspend fun <T> Flow<T>.test(
+    scope: CoroutineScope,
+    waitForDelay: Boolean = false
+): FlowTestObserver<T> {
+    return FlowTestObserver(scope, this@test, waitForDelay)
+}
+
+/**
+ * Test function that awaits with time out until each delay method is run and then since
+ * it takes a predicate that runs after a timeout.
+ */
+suspend fun <T> Flow<T>.testAfterDelay(
+    scope: CoroutineScope,
+    predicate: suspend FlowTestObserver<T>.() -> Unit
+
+): Job {
+    return scope.launch(coroutineContext) {
+        FlowTestObserver(this, this@testAfterDelay, true).predicate()
+    }
+}
+
+
+```

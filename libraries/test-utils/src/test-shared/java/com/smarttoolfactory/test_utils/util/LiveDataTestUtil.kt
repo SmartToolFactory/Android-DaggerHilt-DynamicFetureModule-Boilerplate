@@ -52,12 +52,6 @@ fun <T> LiveData<T>.getOrAwaitValue(
  * * Use with `InstantTaskExecutorRule` or a similar mechanism to execute tasks synchronously.
  *
  */
-
-/*
-    TODO Add observe forever and timeout mechanism
-
-    Hint: Make other functions wait while onChanged is still running
- */
 class LiveDataTestObserver<T> constructor(
     private val liveData: LiveData<T>
 ) : Observer<T> {
@@ -93,16 +87,6 @@ class LiveDataTestObserver<T> constructor(
         if (!testValues.containsAll(predicates.asList())) throw  AssertionError("Assertion error!")
         return this
     }
-
-//    fun assertValues(predicate: List<T>.() -> Boolean): TestObserver<T> {
-//        testValues.predicate()
-//        return this
-//    }
-//
-//    fun values(predicate: List<T>.() -> Unit): TestObserver<T> {
-//        testValues.predicate()
-//        return this
-//    }
 
     fun assertValues(predicate: (List<T>) -> Boolean): LiveDataTestObserver<T> {
         predicate(testValues)
