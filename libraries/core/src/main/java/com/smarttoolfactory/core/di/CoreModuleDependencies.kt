@@ -16,5 +16,4 @@ interface CoreModuleDependencies {
        Provision methods to provide dependencies to components that depend on this component
      */
     fun coreDependency(): CoreDependency
-
 }

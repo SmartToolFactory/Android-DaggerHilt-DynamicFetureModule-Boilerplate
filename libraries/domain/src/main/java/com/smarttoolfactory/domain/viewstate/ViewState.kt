@@ -1,6 +1,5 @@
 package com.smarttoolfactory.domain.viewstate
 
-
 class ViewState<T>(
     val status: Status,
     val data: T? = null,

@@ -14,5 +14,4 @@ class CoreModule {
     @Singleton
     @Provides
     fun provideCoreDependency() = CoreDependency()
-
 }

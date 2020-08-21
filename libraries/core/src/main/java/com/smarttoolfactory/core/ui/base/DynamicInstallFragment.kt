@@ -9,7 +9,6 @@ import androidx.navigation.dynamicfeatures.DynamicInstallMonitor
 import com.google.android.play.core.splitinstall.SplitInstallSessionState
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
 
-
 /**
  * Fragment with [DynamicInstallMonitor] to navigate with dynamic features based on [SplitInstallSessionStatus]
  */
@@ -20,7 +19,6 @@ open class DynamicInstallFragment : Fragment() {
      * after we tried to navigate to it and under circumstances that it's not available.
      */
     private val installMonitor = DynamicInstallMonitor()
-
 
     fun navigateWithInstallMonitor(navController: NavController, @IdRes destinationId: Int) {
 
@@ -48,7 +46,6 @@ open class DynamicInstallFragment : Fragment() {
                                 navController.navigate(destinationId, null, null, null)
                             }
                             SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {
-
                             }
 
                             // Handle all remaining states:
@@ -56,17 +53,14 @@ open class DynamicInstallFragment : Fragment() {
                             }
                             SplitInstallSessionStatus.CANCELED -> {
                             }
-
                         }
 
                         if (sessionState.hasTerminalStatus()) {
                             installMonitor.status.removeObserver(this)
                         }
                     }
-                })
+                }
+            )
         }
-
     }
-
 }
-

@@ -51,9 +51,9 @@ inline fun <reified T : Any> convertFromJsonToObjectList(json: String): List<T>?
     if (itemList.first() !is LinkedTreeMap<*, *>)
         return itemList
 
-    //Must use map here because the result is a list of LinkedTreeMaps
+    // Must use map here because the result is a list of LinkedTreeMaps
     val list: ArrayList<Map<String, Any?>>? = gson.fromJsonWithType(json)
-    //handle type erasure
+    // handle type erasure
 
     return list?.mapNotNull {
         gson.mapFromLinkedTreeMap(it, T::class.java)

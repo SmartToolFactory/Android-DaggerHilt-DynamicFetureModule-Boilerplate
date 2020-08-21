@@ -84,7 +84,7 @@ class LiveDataTestObserver<T> constructor(
     }
 
     fun assertValues(vararg predicates: T): LiveDataTestObserver<T> {
-        if (!testValues.containsAll(predicates.asList())) throw  AssertionError("Assertion error!")
+        if (!testValues.containsAll(predicates.asList())) throw AssertionError("Assertion error!")
         return this
     }
 

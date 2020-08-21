@@ -28,7 +28,6 @@ class MockWebServerRule : TestRule {
                 base.evaluate()
                 mockWebServer.shutdown()
             }
-
         }
     }
 }

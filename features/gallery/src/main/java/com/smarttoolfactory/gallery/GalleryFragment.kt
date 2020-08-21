@@ -27,7 +27,6 @@ class GalleryFragment : Fragment() {
     @Inject
     lateinit var galleryDependency: GalleryDependency
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,7 +39,7 @@ class GalleryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<TextView>(R.id.tvDependencies).text =
             "CoreModule @Singleton coreDependency: ${coreDependency.hashCode()}\n" +
-                    "GalleryModule no scope galleryDependency: ${galleryDependency.hashCode()}"
+            "GalleryModule no scope galleryDependency: ${galleryDependency.hashCode()}"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         initCoreDependentInjection()
@@ -59,6 +58,5 @@ class GalleryFragment : Fragment() {
             requireActivity().application
         )
             .inject(this)
-
     }
 }

@@ -2,11 +2,15 @@ package com.smarttoolfactory.test_utils.util
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
 import kotlin.coroutines.coroutineContext
-
 
 class FlowTestObserver<T>(
     private val coroutineScope: CoroutineScope,
@@ -22,20 +26,12 @@ class FlowTestObserver<T>(
 
     private lateinit var job: Job
 
-
     private suspend fun initializeAndJoin() {
-
-        println("🏢  TestObserver in initializeWithNoTimeOut(), in thread: ${Thread.currentThread().name}")
-
         job = createJob(coroutineScope)
 
         // Wait this job after end of possible delays
 //        job.join()
-
-        println("👍 TestObserver initializeAndJoin() Job canceled: ${job.isCancelled}")
-
     }
-
 
     private suspend fun initialize() {
 
@@ -45,7 +41,6 @@ class FlowTestObserver<T>(
             if (waitForDelay) {
                 try {
                     withTimeout(Long.MAX_VALUE) {
-                        println("🏠 TestObserver in withTimeOut(), in thread: ${Thread.currentThread().name}")
                         job = createJob(this)
                     }
                 } catch (e: Exception) {
@@ -54,42 +49,29 @@ class FlowTestObserver<T>(
             } else {
                 initializeAndJoin()
             }
-            println("🎃 FlowTestObserver initialize() ENDED!, in thread: ${Thread.currentThread().name}")
         }
-
     }
 
     private fun createJob(scope: CoroutineScope): Job {
 
         val job = flow
-            .onStart {
-                println("😍 FlowTestObserver init() onStart, in thread: ${Thread.currentThread().name}")
-            }
+            .onStart {}
             .onCompletion {
-                println("💀 FlowTestObserver init() onCompletion, in thread: ${Thread.currentThread().name}")
                 isCompleted = true
             }
             .catch { throwable ->
-                println("🤬 FlowTestObserver init() catch, in thread: ${Thread.currentThread().name}")
                 error = throwable
             }
             .onEach {
-                println("🍏 FlowTestObserver init() collect, in thread: ${Thread.currentThread().name}")
                 testValues.add(it)
             }
             .launchIn(scope)
-
-        println("🏭 FlowTestObserver createJob() job canceled: ${job.isCancelled} in thread: ${Thread.currentThread().name}")
-
         return job
     }
-
 
     suspend fun assertNoValues(): FlowTestObserver<T> {
 
         initialize()
-
-        println("⚠️ assertNoValues: ${testValues.size}, in thread: ${Thread.currentThread().name}")
 
         if (testValues.isNotEmpty()) throw AssertionError(
             "Assertion error! Actual size ${testValues.size}"
@@ -100,8 +82,6 @@ class FlowTestObserver<T>(
     suspend fun assertValueCount(count: Int): FlowTestObserver<T> {
 
         initialize()
-
-        println("⚠️ assertValueCount(): ${testValues.size}, in thread: ${Thread.currentThread().name}")
 
         if (count < 0) throw AssertionError(
             "Assertion error! Value count cannot be smaller than zero"
@@ -116,11 +96,8 @@ class FlowTestObserver<T>(
 
         initialize()
 
-        println("⚠️ assertValues(): ${testValues.size}, in thread: ${Thread.currentThread().name}")
-
-
         if (!testValues.containsAll(values.asList()))
-            throw  AssertionError("Assertion error! At least one value does not match")
+            throw AssertionError("Assertion error! At least one value does not match")
         return this
     }
 
@@ -129,7 +106,7 @@ class FlowTestObserver<T>(
         initialize()
 
         if (!predicate(testValues))
-            throw  AssertionError("Assertion error! At least one value does not match")
+            throw AssertionError("Assertion error! At least one value does not match")
         return this
     }
 
@@ -139,8 +116,10 @@ class FlowTestObserver<T>(
 
         val errorNotNull = exceptionNotNull()
 
-        if (!(errorNotNull::class.java == throwable::class.java &&
-                    errorNotNull.message == throwable.message)
+        if (!(
+            errorNotNull::class.java == throwable::class.java &&
+                errorNotNull.message == throwable.message
+            )
         )
             throw AssertionError("Assertion Error! throwable: $throwable does not match $errorNotNull")
         return this
@@ -153,7 +132,7 @@ class FlowTestObserver<T>(
         val errorNotNull = exceptionNotNull()
 
         if (errorNotNull::class.java != errorClass)
-            throw  AssertionError("Assertion Error! errorClass $errorClass does not match ${errorNotNull::class.java}")
+            throw AssertionError("Assertion Error! errorClass $errorClass does not match ${errorNotNull::class.java}")
         return this
     }
 
@@ -217,11 +196,10 @@ class FlowTestObserver<T>(
         return testValues
     }
 
-
     private fun exceptionNotNull(): Throwable {
 
         if (error == null)
-            throw  AssertionError("There is no exception")
+            throw AssertionError("There is no exception")
 
         return error!!
     }
@@ -244,12 +222,6 @@ suspend fun <T> Flow<T>.test(
     waitForDelay: Boolean = false
 ): FlowTestObserver<T> {
 
-    println("😱 TestObserver EXTENSION test() INIT in thread: ${Thread.currentThread().name}")
-
-//    return withContext(coroutineContext) {
-//        FlowTestObserver(this, this@test)
-//    }
-
     return FlowTestObserver(scope, this@test, waitForDelay)
 }
 
@@ -263,8 +235,6 @@ suspend fun <T> Flow<T>.testAfterDelay(
 
 ): Job {
     return scope.launch(coroutineContext) {
-
-        println("😱 TestObserver EXTENSION testDeclarative() INIT in thread: ${Thread.currentThread().name}")
         FlowTestObserver(this, this@testAfterDelay, true).predicate()
     }
 }
