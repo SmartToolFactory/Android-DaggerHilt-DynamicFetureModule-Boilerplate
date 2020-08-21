@@ -1,13 +1,16 @@
-package com.smarttoolfactory.data.utils
+package com.smarttoolfactory.domain.util
 
-import io.reactivex.Maybe
-import io.reactivex.Observable
-import io.reactivex.Scheduler
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
+
+import com.smarttoolfactory.domain.viewstate.Status
+import com.smarttoolfactory.domain.viewstate.ViewState
+import io.reactivex.rxjava3.core.Maybe
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.schedulers.Schedulers
+
 
 /**
  *
@@ -23,51 +26,32 @@ fun <T> Observable<T>.listen(
         .observeOn(schedulerObserve)
 }
 
-fun <T> Observable<T>.listenOnMain(): Observable<T> {
-    return listen(Schedulers.io(), AndroidSchedulers.mainThread())
+
+fun <T> Observable<T>.subscribeOnIoObserveOnComputation(): Observable<T> {
+    return listen(Schedulers.io(), Schedulers.computation())
 }
 
-fun <T> Observable<T>.listenOnIO(): Observable<T> {
-    return listen(Schedulers.io(), Schedulers.io())
+
+fun <T> Single<T>.listen(
+    scheduleSubscribe: Scheduler,
+    schedulerObserve: Scheduler
+): Single<T> {
+    return subscribeOn(scheduleSubscribe)
+        .observeOn(schedulerObserve)
 }
 
-fun <T> Observable<T>.listenOnComputation(): Observable<T> {
-    return listen(Schedulers.computation(), Schedulers.computation())
+
+fun <T> Single<T>.subscribeOnIoObserveOnComputation(): Single<T> {
+    return listen(Schedulers.io(), Schedulers.computation())
 }
 
-/**
- * Extension method to subscribe an observable on schedulers thread and observe on main.
- *
- */
-fun <T> Observable<T>.observeResultOnMain(
-    onNext: (T) -> Unit,
-    onError: ((Throwable) -> Unit)? = null,
-    onComplete: (() -> Unit)? = null
-): Disposable {
-    return listenOnMain()
-        .subscribe(
-            {
-                onNext(it)
-            },
-            { throwable ->
-                onError?.apply {
-                    onError(throwable)
-                }
-            },
-            {
-                onComplete?.apply {
-                    onComplete()
-                }
-            }
-        )
-}
 
 fun <T> Observable<T>.observeResultOnIO(
     onNext: (T) -> Unit,
     onError: ((Throwable) -> Unit)? = null,
     onComplete: (() -> Unit)? = null
 ): Disposable {
-    return listenOnIO()
+    return subscribeOnIoObserveOnComputation()
         .subscribe(
             {
                 onNext(it)
@@ -81,31 +65,38 @@ fun <T> Observable<T>.observeResultOnIO(
                 onComplete?.apply {
                     onComplete()
                 }
-            }
-        )
+            })
 }
 
-fun <T> Observable<T>.observeResultOnComputation(
-    onNext: (T) -> Unit,
-    onError: ((Throwable) -> Unit)? = null,
-    onComplete: (() -> Unit)? = null
-): Disposable {
-    return listenOnComputation()
-        .subscribe(
-            {
-                onNext(it)
-            },
-            { throwable ->
-                onError?.apply {
-                    onError(throwable)
-                }
-            },
-            {
-                onComplete?.apply {
-                    onComplete()
-                }
-            }
-        )
+
+fun <T> Observable<T>.convertToObservableViewState(): Observable<ViewState<T>> {
+    return this
+        .map { data ->
+            ViewState(status = Status.SUCCESS, data = data)
+        }
+        .onErrorResumeNext { throwable: Throwable ->
+            Observable.just(ViewState(status = Status.ERROR, error = throwable))
+        }
+        .startWith(Observable.just(ViewState(status = Status.LOADING)))
+
+}
+
+
+fun <T> Single<T>.convertFromSingleToObservableViewState(): Observable<ViewState<T>> {
+    return this
+        .toObservable()
+        .convertToObservableViewState()
+}
+
+fun <T> Single<T>.convertToSingleViewState(): Single<ViewState<T>> {
+    return this
+        .map { data ->
+            ViewState(status = Status.SUCCESS, data = data)
+        }
+        .onErrorResumeNext { throwable: Throwable ->
+            Single.just(ViewState(status = Status.ERROR, error = throwable))
+        }
+
 }
 
 fun <T> Single<T>.logLifeCycleEvents(): Single<T> {
@@ -135,6 +126,7 @@ fun <T> Single<T>.logLifeCycleEvents(): Single<T> {
             println("🤬 doOnError() ${it.message}")
         }
 }
+
 
 fun <T> Maybe<T>.logLifeCycleEvents(): Maybe<T> {
 
@@ -177,7 +169,7 @@ fun <T> Observable<T>.logLifeCycleEvents(): Observable<T> {
             println("⏱ doOnSubscribe() thread: ${Thread.currentThread().name}")
         }
         .doOnEach {
-            println("🎃 doOnEach() thread: ${Thread.currentThread().name}, event: $it, val: ${it.value}")
+            println("🎃 doOnEach() thread: ${Thread.currentThread().name}, event: ${it}, val: ${it.value}")
         }
         .doOnNext {
             println("🥶 doOnNext() thread: ${Thread.currentThread().name}, val: $it")
