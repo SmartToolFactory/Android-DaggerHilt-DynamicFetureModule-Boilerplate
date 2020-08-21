@@ -67,11 +67,12 @@ object Version {
     const val DAGGER_HILT_VERSION = "2.28.1-alpha"
 
     // RxJava2
-    const val RXJAVA2_VERSION = "2.2.19"
+    const val RX_JAVA2_VERSION = "2.2.19"
     const val RX_JAVA2_ANDROID_VERSION = "2.1.1"
 
     // RxJava3
-    const val RXJAVA3_VERSION = "3.0.5"
+    const val RX_JAVA3_VERSION = "3.0.0"
+    const val RX_JAVA3_ANDROID_VERSION = "3.0.0"
 
     // Coroutines
     const val COROUTINES_VERSION = "1.3.5"

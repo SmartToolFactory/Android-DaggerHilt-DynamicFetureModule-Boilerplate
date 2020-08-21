@@ -54,16 +54,16 @@ object Deps {
         "com.google.dagger:hilt-android-compiler:${Version.DAGGER_HILT_VERSION}"
 
     // RxJava2
-    const val RX_JAVA2 = "io.reactivex.rxjava2:rxjava:${Version.RXJAVA2_VERSION}"
+    const val RX_JAVA2 = "io.reactivex.rxjava2:rxjava:${Version.RX_JAVA2_VERSION}"
 
     // RxJava2 Android
     const val RX_JAVA2_ANDROID =
         "io.reactivex.rxjava2:rxandroid:${Version.RX_JAVA2_ANDROID_VERSION}"
 
     // RxJava3
-    const val RX_JAVA3 = "io.reactivex.rxjava3:rxjava:${Version.RXJAVA3_VERSION}"
+    const val RX_JAVA3 = "io.reactivex.rxjava3:rxjava:${Version.RX_JAVA3_VERSION}"
     // RxJava3 Android
-    const val RX_JAVA3_ANDROID = "io.reactivex.rxjava3:rxandroid:${Version.RXJAVA3_VERSION}"
+    const val RX_JAVA3_ANDROID = "io.reactivex.rxjava3:rxandroid:${Version.RX_JAVA3_ANDROID_VERSION}"
 
 
     // Coroutines
