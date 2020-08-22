@@ -37,20 +37,44 @@ android {
         jvmTarget = "1.8"
     }
 
-//    sourceSets {
+    // Specifies one flavor dimension. Intend to use both reactive libraries as flavors as project develops
+
+//    flavorDimensions("reactive")
 //
-//        val sharedTestDir =
-//            "${project(Modules.AndroidLibrary.TEST_UTILS).projectDir}/src/test-shared/java"
+//    productFlavors {
 //
-//        getByName("test") {
-//            java.srcDir(sharedTestDir)
+//        create("rxjava") {
+//            dimension = "reactive"
+//            applicationIdSuffix = ".rxjava"
+//            versionNameSuffix  = "-rxjava"
 //        }
-//
-//        getByName("androidTest") {
-//            java.srcDir(sharedTestDir)
-//            resources.srcDir("${project(Modules.AndroidLibrary.TEST_UTILS).projectDir}/src/test/resources")
+//        create("coroutines") {
+//            dimension = "reactive"
+//            applicationIdSuffix =".coroutines"
+//            versionNameSuffix = "-coroutines"
 //        }
 //    }
+
+    sourceSets {
+
+        val sharedTestDir =
+            "${project(Modules.AndroidLibrary.TEST_UTILS).projectDir}/src/test-shared/java"
+
+        getByName("test") {
+            java.srcDir(sharedTestDir)
+        }
+
+        getByName("androidTest") {
+            java.srcDir(sharedTestDir)
+            resources.srcDir("${project(Modules.AndroidLibrary.TEST_UTILS).projectDir}/src/test/resources")
+        }
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            exclude("org.jetbrains.kotlinx", "kotlinx-coroutines-debug")
+        }
+    }
 }
 
 dependencies {
@@ -91,10 +115,9 @@ dependencies {
     // Gson
     implementation(Deps.GSON)
 
+    addUnitTestDependencies()
     testImplementation(project(Modules.AndroidLibrary.TEST_UTILS))
 
-    addUnitTestDependencies()
-    testImplementation(TestDeps.MOCK_WEB_SERVER)
-
     addInstrumentationTestDependencies()
+    androidTestImplementation(project(Modules.AndroidLibrary.TEST_UTILS))
 }

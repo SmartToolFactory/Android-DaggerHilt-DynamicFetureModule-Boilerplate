@@ -125,15 +125,15 @@ object TestDeps {
     // (Optional) If you need "Parameterized Tests"
     const val JUNIT5_PARAMS = "org.junit.jupiter:junit-jupiter-params:${TestVersion.junit5Version}"
 
-    const val ANDROIDX_CORE_TESTING =
-        "androidx.arch.core:core-testing:${TestVersion.archTestingVersion}"
-    const val ROBOLECTRIC = "org.robolectric:robolectric:${TestVersion.robolectricVersion}"
-
     // AndroidX Test - JVM testing
-    const val ANDROIDX_CORE_KTX = "androidx.test:core-ktx:${TestVersion.androidXTestCoreVersion}"
+    const val ANDROIDX_TEST_CORE_KTX = "androidx.test:core-ktx:${TestVersion.androidXTestCoreVersion}"
     const val ANDROIDX_JUNIT =
         "androidx.test.ext:junit:${TestVersion.androidXTestExtKotlinRunnerVersion}"
 
+    const val ANDROIDX_CORE_TESTING =
+        "androidx.arch.core:core-testing:${TestVersion.archTestingVersion}"
+
+    const val ROBOLECTRIC = "org.robolectric:robolectric:${TestVersion.robolectricVersion}"
     const val ANDROIDX_ESPRESSO =
         "androidx.test.espresso:espresso-contrib:${TestVersion.espressoVersion}"
 
