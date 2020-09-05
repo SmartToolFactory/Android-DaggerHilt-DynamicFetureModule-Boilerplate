@@ -12,7 +12,7 @@ object Modules {
     /**
      * Dynamic Feature Modules
      */
-    object DynamicFM {
+    object DynamicFeature {
         const val GALLERY = ":features:gallery"
     }
 }

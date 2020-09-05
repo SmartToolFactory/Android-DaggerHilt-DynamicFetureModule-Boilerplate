@@ -43,11 +43,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    testOptions {
-        unitTests.isIncludeAndroidResources = true
-    }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
     }
 }
 
@@ -63,13 +63,16 @@ dependencies {
     implementation(Deps.COROUTINES_CORE)
     implementation(Deps.COROUTINES_ANDROID)
 
-//    implementation(TestDeps.ANDROIDX_CORE_KTX)
-//    implementation(TestDeps.ANDROIDX_CORE_TESTING)
-
     // Lifecycle, LiveData, ViewModel
     implementation(Deps.LIFECYCLE_LIVEDATA_KTX)
     implementation(Deps.LIFECYCLE_VIEWMODEL_KTX)
     implementation(Deps.LIFECYCLE_EXTENSIONS)
+
+//    implementation(TestDeps.ANDROIDX_CORE_KTX)
+//    implementation(TestDeps.ANDROIDX_CORE_TESTING)
+
+    implementation(TestDeps.JUNIT5_API)
+    implementation(TestDeps.JUNIT5_ENGINE)
 
     // GSon
     implementation(Deps.GSON)

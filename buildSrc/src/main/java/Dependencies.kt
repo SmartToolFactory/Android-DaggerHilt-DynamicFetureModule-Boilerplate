@@ -20,6 +20,9 @@ object Deps {
     // ViewPager2
     const val VIEWPAGER2 = "androidx.viewpager2:viewpager2:${Version.VIEWPAGER2_VERSION}"
 
+    // SwipeRefreshLayout
+    const val SWIPE_REFRESH_LAYOUT =
+        "androidx.swiperefreshlayout:swiperefreshlayout:${Version.SWIPE_REFRESH_LAYOUT_VERSION}"
 
 
     // Lifecycle, ViewModel and LiveData
@@ -33,8 +36,8 @@ object Deps {
 
     // Navigation Components
     const val NAVIGATION_FRAGMENT =
-        "androidx.navigation:navigation-fragment:${Version.NAVIGATION_VERSION}"
-    const val NAVIGATION_UI = "androidx.navigation:navigation-ui:${Version.NAVIGATION_VERSION}"
+        "androidx.navigation:navigation-fragment-ktx:${Version.NAVIGATION_VERSION}"
+    const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx:${Version.NAVIGATION_VERSION}"
     const val NAVIGATION_RUNTIME =
         "androidx.navigation:navigation-runtime-ktx:${Version.NAVIGATION_VERSION}"
 
@@ -53,6 +56,12 @@ object Deps {
     const val DAGGER_HILT_COMPILER =
         "com.google.dagger:hilt-android-compiler:${Version.DAGGER_HILT_VERSION}"
 
+    // Dagger Hilt AndroidX
+    const val DAGGER_HILT_VIEWMODEL =
+        "androidx.hilt:hilt-lifecycle-viewmodel:${Version.DAGGER_HILT_ANDRIODX}"
+    const val DAGGER_HILT_ANDROIDX_HILT_COMPILER =
+        "androidx.hilt:hilt-compiler:${Version.DAGGER_HILT_ANDRIODX}"
+
     // RxJava2
     const val RX_JAVA2 = "io.reactivex.rxjava2:rxjava:${Version.RX_JAVA2_VERSION}"
 
@@ -62,9 +71,10 @@ object Deps {
 
     // RxJava3
     const val RX_JAVA3 = "io.reactivex.rxjava3:rxjava:${Version.RX_JAVA3_VERSION}"
-    // RxJava3 Android
-    const val RX_JAVA3_ANDROID = "io.reactivex.rxjava3:rxandroid:${Version.RX_JAVA3_ANDROID_VERSION}"
 
+    // RxJava3 Android
+    const val RX_JAVA3_ANDROID =
+        "io.reactivex.rxjava3:rxandroid:${Version.RX_JAVA3_ANDROID_VERSION}"
 
     // Coroutines
     const val COROUTINES_CORE =
@@ -77,10 +87,13 @@ object Deps {
     const val RETROFIT_GSON_CONVERTER =
         "com.squareup.retrofit2:converter-gson:${Version.RETROFIT_VERSION}"
     const val RETROFIT_RX_JAVA2_ADAPTER = "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0"
-    const val RETROFIT_RX_JAVA3_ADAPTER = "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
+    const val RETROFIT_RX_JAVA3_ADAPTER =
+        "com.squareup.retrofit2:adapter-rxjava3:${Version.RETROFIT_RXJAVA3_ADAPTER}"
 
     // Retrofit change base url runtime
     const val RETROFIT_URL_MANAGER = "me.jessyan:retrofit-url-manager:1.4.0"
+
+    const val OK_HTTP3 = "com.squareup.okhttp3:okhttp:${Version.OK_HTTP3_VERSION}"
 
     // Gson
     const val GSON = "com.google.code.gson:gson:${Version.GSON_VERSION}"
@@ -101,6 +114,9 @@ object Deps {
     // glide
     const val GLIDE = "com.github.bumptech.glide:glide:${Version.GLIDE_VERSION}"
     const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Version.GLIDE_VERSION}"
+
+    // Lottie
+    const val LOTTIE = "com.airbnb.android:lottie:${Version.LOTTIE_VERSION}"
 
     // Preference Manager
     const val PREFERENCE_MANAGER =
@@ -125,15 +141,16 @@ object TestDeps {
     // (Optional) If you need "Parameterized Tests"
     const val JUNIT5_PARAMS = "org.junit.jupiter:junit-jupiter-params:${TestVersion.junit5Version}"
 
+    const val ANDROIDX_CORE_TESTING =
+        "androidx.arch.core:core-testing:${TestVersion.archTestingVersion}"
+    const val ROBOLECTRIC = "org.robolectric:robolectric:${TestVersion.robolectricVersion}"
+
     // AndroidX Test - JVM testing
-    const val ANDROIDX_TEST_CORE_KTX = "androidx.test:core-ktx:${TestVersion.androidXTestCoreVersion}"
+    const val ANDROIDX_TEST_CORE_KTX =
+        "androidx.test:core-ktx:${TestVersion.androidXTestCoreVersion}"
     const val ANDROIDX_JUNIT =
         "androidx.test.ext:junit:${TestVersion.androidXTestExtKotlinRunnerVersion}"
 
-    const val ANDROIDX_CORE_TESTING =
-        "androidx.arch.core:core-testing:${TestVersion.archTestingVersion}"
-
-    const val ROBOLECTRIC = "org.robolectric:robolectric:${TestVersion.robolectricVersion}"
     const val ANDROIDX_ESPRESSO =
         "androidx.test.espresso:espresso-contrib:${TestVersion.espressoVersion}"
 

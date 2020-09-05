@@ -21,6 +21,18 @@ android {
         versionCode = AndroidVersion.VERSION_CODE
         versionName = AndroidVersion.VERSION_NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // TODO Scheme is  created in data module but with which one, find out
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.schemaLocation"] = "$projectDir/schemas"
+            }
+        }
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
     }
 
     buildTypes {
@@ -42,11 +54,34 @@ android {
 //        }
 //    }
 
-    flavorDimensions("debug")
-    productFlavors {
-    }
+    // Specifies one flavor dimension.
+//    flavorDimensions("reactive")
+//
+//    productFlavors {
+//
+//        create("rxjava") {
+//            dimension = "reactive"
+//            applicationIdSuffix = ".rxjava"
+//            versionNameSuffix  = "-rxjava"
+//        }
+//        create("coroutines") {
+//            dimension = "reactive"
+//            applicationIdSuffix =".coroutines"
+//            versionNameSuffix = "-coroutines"
+//        }
+//    }
 
-    sourceSets {
+//    configurations.all {
+//        resolutionStrategy {
+//            exclude("org.jetbrains.kotlinx", "kotlinx-coroutines-debug")
+//        }
+//    }
+
+    packagingOptions {
+        exclude("**/attach_hotspot_windows.dll")
+        exclude("META-INF/licenses/**")
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
     }
 
     android.buildFeatures.dataBinding = true
@@ -59,21 +94,30 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    dynamicFeatures = mutableSetOf(
+        Modules.DynamicFeature.GALLERY
+    )
 
-    dynamicFeatures = mutableSetOf(Modules.DynamicFM.GALLERY)
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+    }
 }
 
 dependencies {
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
+    implementation(project(Modules.AndroidLibrary.CORE))
     implementation(project(Modules.AndroidLibrary.DOMAIN))
     implementation(project(Modules.AndroidLibrary.DATA))
-    implementation(project(Modules.AndroidLibrary.CORE))
 
     addAppModuleDependencies()
 
-//    testImplementation(project(Modules.AndroidLibrary.TEST_UTILS))
+    // Unit Tests
     addUnitTestDependencies()
+    testImplementation(project(Modules.AndroidLibrary.TEST_UTILS))
+
+    // Instrumentation Tests
     addInstrumentationTestDependencies()
+    androidTestImplementation(project(Modules.AndroidLibrary.TEST_UTILS))
 }

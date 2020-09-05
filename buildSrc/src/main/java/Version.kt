@@ -1,8 +1,8 @@
 object PluginVersion {
     const val KOTLIN_VERSION = "1.4.0"
-    const val GRADLE_VERSION = "4.1.0-rc01"
+    const val GRADLE_VERSION = "4.1.0-rc02"
 
-    const val NAVIGATION_SAFE_ARGS = "2.3.0-alpha06"
+    const val NAV_SAFE_ARGS_VERSION = "2.3.0"
     const val KTLINT_VERSION = "9.3.0"
     const val DETEKT_VERSION = "1.10.0"
 }
@@ -19,27 +19,29 @@ object AndroidVersion {
 
 object Version {
 
-    const val CORE_KTX_VERSION = "1.1.0"
-    const val FRAGMENT_VERSION = "1.1.0-alpha07"
+    const val CORE_KTX_VERSION = "1.3.1"
     const val FRAGMENT_KTX_VERSION = "1.1.0-rc01"
 
     // Appcompat
-    const val APPCOMPAT_VERSION = "1.1.0"
+    const val APPCOMPAT_VERSION = "1.2.0"
 
     // Material
     const val MATERIAL_VERSION = "1.3.0-alpha01"
 
     // ConstraintLayout
-    const val CONSTRAINT_LAYOUT_VERSION = "1.1.3"
+    const val CONSTRAINT_LAYOUT_VERSION = "2.0.1"
 
     // RecyclerView
-    const val RECYCLER_VIEW_VERSION = "1.2.0-alpha01"
+    const val RECYCLER_VIEW_VERSION = "1.2.0-alpha05"
 
     // CardView
     const val CARD_VIEW_VERSION = "1.0.0"
 
     // ViewPager2
     const val VIEWPAGER2_VERSION = "1.1.0-alpha01"
+
+    //SwipeRefreshLayout
+    const val SWIPE_REFRESH_LAYOUT_VERSION = "1.1.0"
 
     // Architecture MVVM & LiveData
     const val LIFECYCLE_VERSION = "2.2.0"
@@ -50,8 +52,11 @@ object Version {
     // Retrofit
     const val RETROFIT_VERSION = "2.8.1"
 
+    // Retrofit RxJava3 Adapter
+    const val RETROFIT_RXJAVA3_ADAPTER ="2.9.0"
+
     // OkHttpClient
-    const val OK_HTTP_VERSION = "3.7.0"
+    const val OK_HTTP3_VERSION = "4.8.1"
 
     // MockWebServer
     const val MOCK_WEB_SERVER_VERSION = "3.7.0"
@@ -65,6 +70,7 @@ object Version {
     // Dagger
     const val DAGGER_VERSION = "2.28"
     const val DAGGER_HILT_VERSION = "2.28.1-alpha"
+    const val DAGGER_HILT_ANDRIODX = "1.0.0-alpha02"
 
     // RxJava2
     const val RX_JAVA2_VERSION = "2.2.19"
@@ -79,6 +85,9 @@ object Version {
 
     // Glide
     const val GLIDE_VERSION = "4.9.0"
+
+    // Lottie
+    const val LOTTIE_VERSION ="3.4.2"
 
     // Preference Manager
     const val PREFERENCE_MANAGER_VERSION ="1.1.1"
@@ -116,7 +125,7 @@ object TestVersion {
     const val coroutinesTestVersion = "1.3.7"
 
     // MockWebServer
-    const val mockWebServerVersion = "3.7.0"
+    const val mockWebServerVersion = "4.8.1"
 
     // Truth Assertion
     const val truthVersion = "1.0.1"
