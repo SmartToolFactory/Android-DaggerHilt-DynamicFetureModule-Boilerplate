@@ -94,9 +94,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    dynamicFeatures = mutableSetOf(
-        Modules.DynamicFeature.GALLERY
-    )
+
+    dynamicFeatures.apply {
+        add(Modules.DynamicFeature.GALLERY)
+    }
 
     testOptions {
         unitTests.isIncludeAndroidResources = true
