@@ -1,5 +1,5 @@
 object PluginVersion {
-    const val KOTLIN_VERSION = "1.4.0"
+    const val KOTLIN_VERSION = "1.5.10"
     const val GRADLE_VERSION = "7.0.0"
 
     const val NAV_SAFE_ARGS_VERSION = "2.3.0"
@@ -20,7 +20,6 @@ object AndroidVersion {
 object Version {
 
     const val CORE_KTX_VERSION = "1.6.0"
-    const val FRAGMENT_KTX_VERSION = "1.1.0-rc01"
 
     // Appcompat
     const val APPCOMPAT_VERSION = "1.3.1"
@@ -33,9 +32,6 @@ object Version {
 
     // RecyclerView
     const val RECYCLER_VIEW_VERSION = "1.2.0-alpha05"
-
-    // CardView
-    const val CARD_VIEW_VERSION = "1.0.0"
 
     // ViewPager2
     const val VIEWPAGER2_VERSION = "1.1.0-alpha01"
@@ -65,22 +61,17 @@ object Version {
     const val GSON_VERSION = "2.8.4"
 
     // Room
-    const val ROOM_VERSION = "2.3.0-alpha02"
+    const val ROOM_VERSION = "2.4.0-alpha02"
 
     // Dagger
     const val DAGGER_VERSION = "2.38.1"
-    const val DAGGER_HILT_VERSION = "2.38.1"
-
-    // RxJava2
-    const val RX_JAVA2_VERSION = "2.2.19"
-    const val RX_JAVA2_ANDROID_VERSION = "2.1.1"
 
     // RxJava3
     const val RX_JAVA3_VERSION = "3.0.0"
     const val RX_JAVA3_ANDROID_VERSION = "3.0.0"
 
     // Coroutines
-    const val COROUTINES_VERSION = "1.3.5"
+    const val COROUTINES_VERSION = "1.5.0"
 
     // Glide
     const val GLIDE_VERSION = "4.9.0"
