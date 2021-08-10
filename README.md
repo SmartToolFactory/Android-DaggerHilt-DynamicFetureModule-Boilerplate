@@ -276,7 +276,7 @@ Core module should have provision methods for dependecies to be injected in core
 
 ```
 @EntryPoint
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 interface CoreModuleDependencies {
 
     /*

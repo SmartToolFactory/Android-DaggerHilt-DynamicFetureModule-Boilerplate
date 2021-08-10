@@ -78,10 +78,13 @@ android {
 //    }
 
     packagingOptions {
-        exclude("**/attach_hotspot_windows.dll")
-        exclude("META-INF/licenses/**")
-        exclude("META-INF/AL2.0")
-        exclude("META-INF/LGPL2.1")
+        resources.excludes.apply {
+            add("**/attach_hotspot_windows.dll")
+            add("META-INF/licenses/**")
+            add("META-INF/AL2.0")
+            add("META-INF/LGPL2.1")
+        }
+
     }
 
     android.buildFeatures.dataBinding = true

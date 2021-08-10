@@ -9,7 +9,7 @@ object PluginVersion {
 
 object AndroidVersion {
     const val MIN_SDK_VERSION = 21
-    const val COMPILE_SDK_VERSION = 29
+    const val COMPILE_SDK_VERSION = 30
     const val TARGET_SDK_VERSION = COMPILE_SDK_VERSION
     const val VERSION_CODE = 1
     const val VERSION_NAME = "1.0.0"
@@ -19,17 +19,17 @@ object AndroidVersion {
 
 object Version {
 
-    const val CORE_KTX_VERSION = "1.3.1"
+    const val CORE_KTX_VERSION = "1.6.0"
     const val FRAGMENT_KTX_VERSION = "1.1.0-rc01"
 
     // Appcompat
-    const val APPCOMPAT_VERSION = "1.2.0"
+    const val APPCOMPAT_VERSION = "1.3.1"
 
     // Material
-    const val MATERIAL_VERSION = "1.3.0-alpha01"
+    const val MATERIAL_VERSION = "1.4.0"
 
     // ConstraintLayout
-    const val CONSTRAINT_LAYOUT_VERSION = "2.0.1"
+    const val CONSTRAINT_LAYOUT_VERSION = "2.1.0"
 
     // RecyclerView
     const val RECYCLER_VIEW_VERSION = "1.2.0-alpha05"
@@ -68,9 +68,8 @@ object Version {
     const val ROOM_VERSION = "2.3.0-alpha02"
 
     // Dagger
-    const val DAGGER_VERSION = "2.28"
-    const val DAGGER_HILT_VERSION = "2.28.1-alpha"
-    const val DAGGER_HILT_ANDRIODX = "1.0.0-alpha02"
+    const val DAGGER_VERSION = "2.38.1"
+    const val DAGGER_HILT_VERSION = "2.38.1"
 
     // RxJava2
     const val RX_JAVA2_VERSION = "2.2.19"

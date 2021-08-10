@@ -45,22 +45,11 @@ object Deps {
     const val NAVIGATION_DYNAMIC =
         "androidx.navigation:navigation-dynamic-features-fragment:${Version.NAVIGATION_VERSION}"
 
-    // Dagger Core dependencies
-    const val DAGGER = "com.google.dagger:dagger:${Version.MATERIAL_VERSION}"
-    const val DAGGER_COMPILER = "com.google.dagger:dagger-compiler:${Version.DAGGER_VERSION}"
-    const val DAGGER_ANNOTATION_PROCESSOR =
-        "com.google.dagger:dagger-android-processor:${Version.DAGGER_VERSION}"
-
     // Dagger Hilt
     const val DAGGER_HILT_ANDROID = "com.google.dagger:hilt-android:${Version.DAGGER_HILT_VERSION}"
     const val DAGGER_HILT_COMPILER =
         "com.google.dagger:hilt-android-compiler:${Version.DAGGER_HILT_VERSION}"
 
-    // Dagger Hilt AndroidX
-    const val DAGGER_HILT_VIEWMODEL =
-        "androidx.hilt:hilt-lifecycle-viewmodel:${Version.DAGGER_HILT_ANDRIODX}"
-    const val DAGGER_HILT_ANDROIDX_HILT_COMPILER =
-        "androidx.hilt:hilt-compiler:${Version.DAGGER_HILT_ANDRIODX}"
 
     // RxJava2
     const val RX_JAVA2 = "io.reactivex.rxjava2:rxjava:${Version.RX_JAVA2_VERSION}"
