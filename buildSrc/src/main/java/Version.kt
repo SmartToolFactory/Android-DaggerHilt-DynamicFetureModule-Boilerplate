@@ -14,12 +14,13 @@ object AndroidVersion {
     const val VERSION_CODE = 1
     const val VERSION_NAME = "1.0.0"
 
-    const val APPLICATION_ID = "com.smarttoolfactory.projectboilerplate"
+    const val APPLICATION_ID = "com.smarttoolfactory.propertyfindar"
 }
 
 object Version {
 
     const val CORE_KTX_VERSION = "1.6.0"
+    const val FRAGMENT_KTX_VERSION = "1.2.5"
 
     // Appcompat
     const val APPCOMPAT_VERSION = "1.3.1"
@@ -74,10 +75,13 @@ object Version {
     const val COROUTINES_VERSION = "1.5.0"
 
     // Glide
-    const val GLIDE_VERSION = "4.9.0"
+    const val GLIDE_VERSION = "4.11.0"
 
     // Lottie
     const val LOTTIE_VERSION ="3.4.2"
+
+    // MpChart
+    const val MP_CHART_VERSION = "3.1.0"
 
     // Preference Manager
     const val PREFERENCE_MANAGER_VERSION ="1.1.1"
@@ -86,7 +90,7 @@ object Version {
     const val TIMBER_VERSION = "4.7.1"
 
     // Chucker
-    const val CHUCKER_VERSION ="3.2.0"
+    const val CHUCKER_VERSION ="3.4.0"
 
     // Leak Canary
     const val LEAK_CANARY_VERSION = "2.4"
