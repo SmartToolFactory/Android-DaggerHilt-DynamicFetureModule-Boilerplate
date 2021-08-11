@@ -1,5 +1,6 @@
 package extension
 
+import Compose
 import Deps
 import TestDeps
 import org.gradle.api.artifacts.Dependency
@@ -75,6 +76,12 @@ fun DependencyHandler.addAppModuleDependencies() {
     // Glide
     implementation(Deps.GLIDE)
     kapt(Deps.GLIDE_COMPILER)
+
+    // Compose
+    implementation(Compose.COMPOSE_UI)
+    implementation(Compose.COMPOSE_MATERIAL)
+    implementation(Compose.COMPOSE_TOOLING)
+    implementation(Compose.COMPOSE_ACTIVITY)
 }
 
 /**

@@ -95,6 +95,9 @@ object Version {
     // Leak Canary
     const val LEAK_CANARY_VERSION = "2.4"
 
+    // Compose
+    const val COMPOSE_VERSION ="1.0.0"
+    const val COMPOSE_ACTIVITY_VERSION="1.3.1"
 }
 
 object TestVersion {

@@ -7,7 +7,7 @@ plugins {
 
 android {
 
-    compileSdkVersion(AndroidVersion.COMPILE_SDK_VERSION)
+    compileSdk = AndroidVersion.COMPILE_SDK_VERSION
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -54,8 +54,6 @@ dependencies {
     implementation(Deps.KOTLIN)
     implementation(Deps.ANDROIDX_CORE_KTX)
 
-    implementation(Deps.RX_JAVA3)
-    implementation(Deps.RX_JAVA3_ANDROID)
     implementation(Deps.COROUTINES_CORE)
     implementation(Deps.COROUTINES_ANDROID)
 

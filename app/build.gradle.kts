@@ -12,17 +12,16 @@ plugins {
 
 android {
 
-    compileSdkVersion(AndroidVersion.COMPILE_SDK_VERSION)
+    compileSdk = AndroidVersion.COMPILE_SDK_VERSION
 
     defaultConfig {
         applicationId = AndroidVersion.APPLICATION_ID
-        minSdkVersion(AndroidVersion.MIN_SDK_VERSION)
-        targetSdkVersion(AndroidVersion.TARGET_SDK_VERSION)
+        minSdk = AndroidVersion.MIN_SDK_VERSION
+        targetSdk =AndroidVersion.TARGET_SDK_VERSION
         versionCode = AndroidVersion.VERSION_CODE
         versionName = AndroidVersion.VERSION_NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // TODO Scheme is  created in data module but with which one, find out
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments["room.schemaLocation"] = "$projectDir/schemas"
@@ -32,6 +31,10 @@ android {
             arguments {
                 arg("room.schemaLocation", "$projectDir/schemas")
             }
+        }
+
+        vectorDrawables {
+            useSupportLibrary = true
         }
     }
 
@@ -96,6 +99,13 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Version.COMPOSE_VERSION
     }
 
     dynamicFeatures.apply {

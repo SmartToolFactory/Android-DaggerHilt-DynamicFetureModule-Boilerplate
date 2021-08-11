@@ -114,6 +114,14 @@ object Deps {
         "com.squareup.leakcanary:leakcanary-android:${Version.LEAK_CANARY_VERSION}"
 }
 
+object Compose {
+    const val COMPOSE_UI = "androidx.compose.ui:ui:${Version.COMPOSE_VERSION}"
+    const val COMPOSE_MATERIAL = "androidx.compose.material:material:${Version.COMPOSE_VERSION}"
+    const val COMPOSE_TOOLING = "androidx.compose.ui:ui-tooling-preview:${Version.COMPOSE_VERSION}"
+    const val COMPOSE_ACTIVITY =
+        "androidx.activity:activity-compose:${Version.COMPOSE_ACTIVITY_VERSION}"
+}
+
 object TestDeps {
 
     // (Required) Writing and executing Unit Tests on the JUnit Platform

@@ -5,7 +5,7 @@
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
 
-This is a boilerplate code to use when ceating a project not to repeat same process over again when starting a new project. Folders are created, dependies and libraries are set up
+This is a boilerplate code to use when creating a project not to repeat same process over again when starting a new project. Folders are created, dependies and libraries are set up
 to create a requirements when starting a new project.
 
 * Gradle Kotlin DSL is used for setting up gradle files with ```buildSrc``` folder and extensions.
@@ -14,7 +14,7 @@ to create a requirements when starting a new project.
 * ```features``` and ```libraries``` folders are used to include android libraries and dynamic feature modules
 * In core module dagger hilt dependencies and ```@EntryPoint``` is created
 * test-utils module for shared folder for tes and androidTest folders, LiveDataObserver and FlowObserver.
-
+* Jetpack Compose dependencies added, app runs ```@Composeable``` as project is run
 ### Note
 Change ```applicationId```in ```Version.AndroidVersion```
 
