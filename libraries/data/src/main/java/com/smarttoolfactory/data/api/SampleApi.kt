@@ -1,12 +1,5 @@
 package com.smarttoolfactory.data.api
 
+interface SampleCoroutinesApi
 
-
-interface SampleCoroutinesApi {
-
-}
-
-interface SampleRxJava3Api {
-
-
-}
+interface SampleRxJava3Api

@@ -17,7 +17,7 @@ android {
     defaultConfig {
         applicationId = AndroidVersion.APPLICATION_ID
         minSdk = AndroidVersion.MIN_SDK_VERSION
-        targetSdk =AndroidVersion.TARGET_SDK_VERSION
+        targetSdk = AndroidVersion.TARGET_SDK_VERSION
         versionCode = AndroidVersion.VERSION_CODE
         versionName = AndroidVersion.VERSION_NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -87,7 +87,6 @@ android {
             add("META-INF/AL2.0")
             add("META-INF/LGPL2.1")
         }
-
     }
 
     android.buildFeatures.dataBinding = true

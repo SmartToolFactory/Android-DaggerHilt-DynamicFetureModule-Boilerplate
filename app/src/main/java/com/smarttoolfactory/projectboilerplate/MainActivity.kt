@@ -1,11 +1,7 @@
 package com.smarttoolfactory.projectboilerplate
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,16 +15,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // 🔥 Opens MainFragment which uses avController to navigate to dynamic feature module
-//        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)
 
-        setContent {
-            SampleTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
-                }
-            }
-        }
+//        setContent {
+//            SampleTheme {
+//                // A surface container using the 'background' color from the theme
+//                Surface(color = MaterialTheme.colors.background) {
+//                    Greeting("Android")
+//                }
+//            }
+//        }
     }
 }
 

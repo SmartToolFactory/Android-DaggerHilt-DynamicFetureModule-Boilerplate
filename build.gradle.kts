@@ -4,6 +4,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
         maven { url = uri("https://plugins.gradle.org/m2/") }
     }
 
@@ -25,6 +26,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
     }
 }
 
