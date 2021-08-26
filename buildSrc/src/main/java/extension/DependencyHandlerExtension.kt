@@ -169,7 +169,7 @@ fun DependencyHandler.addComposeDependencies() {
     implementation(Compose.TOOLING)
     implementation(Compose.ICONS_EXTENDED)
     implementation(Compose.Activity.activityCompose)
-//    implementation(Compose.Lifecycle.viewModelCompose)
+    implementation(Compose.Lifecycle.viewModelCompose)
 //    implementation(Compose.Navigation.navigationCompose)
     implementation(Compose.Coil.coilCompose)
 }
