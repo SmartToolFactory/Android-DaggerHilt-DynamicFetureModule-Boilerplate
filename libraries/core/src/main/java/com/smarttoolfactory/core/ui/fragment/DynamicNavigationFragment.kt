@@ -2,7 +2,7 @@ package com.smarttoolfactory.core.ui.fragment
 
 import android.os.Bundle
 import androidx.annotation.IdRes
-import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.dynamicfeatures.DynamicExtras
@@ -14,8 +14,7 @@ import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
  * Fragment with [DynamicInstallMonitor] to navigate with dynamic
  * features based on [SplitInstallSessionStatus]
  */
-abstract class DynamicNavigationFragment<ViewBinding : ViewDataBinding> :
-    BaseDataBindingFragment<ViewBinding>() {
+abstract class DynamicNavigationFragment : Fragment() {
 
     /**
      * [DynamicInstallMonitor] is for monitoring installation progress of a dynamic module

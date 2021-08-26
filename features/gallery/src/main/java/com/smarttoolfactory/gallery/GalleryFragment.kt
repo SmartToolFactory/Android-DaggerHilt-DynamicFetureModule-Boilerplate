@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.smarttoolfactory.core.CoreDependency
 import com.smarttoolfactory.core.di.CoreModuleDependencies
+import com.smarttoolfactory.gallery.databinding.FragmentGalleryBinding
 import com.smarttoolfactory.gallery.di.DaggerGalleryComponent
 import com.smarttoolfactory.gallery.model.GalleryDependency
 import dagger.hilt.android.EntryPointAccessors
@@ -27,12 +28,18 @@ class GalleryFragment : Fragment() {
     @Inject
     lateinit var galleryDependency: GalleryDependency
 
+    private var _binding: FragmentGalleryBinding? = null
+    // This property is only valid between onCreateView and
+// onDestroyView.
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_gallery, container, false)
+    ): View {
+        _binding = FragmentGalleryBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,5 +65,10 @@ class GalleryFragment : Fragment() {
             requireActivity().application
         )
             .inject(this)
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }

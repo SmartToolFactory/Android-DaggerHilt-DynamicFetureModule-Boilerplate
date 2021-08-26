@@ -13,7 +13,7 @@ plugins {
 
 android {
 
-    compileSdkVersion(AndroidVersion.COMPILE_SDK_VERSION)
+    compileSdk = AndroidVersion.COMPILE_SDK_VERSION
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -35,6 +35,15 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        compose = true
+        viewBinding = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Version.COMPOSE_VERSION
+    }
 }
 
 dependencies {
@@ -47,12 +56,12 @@ dependencies {
     addBaseDynamicFeatureModuleDependencies()
 
     // Support and Widgets
-    implementation(Deps.APPCOMPAT)
-    implementation(Deps.MATERIAL)
-    implementation(Deps.CONSTRAINT_LAYOUT)
+    implementation(Libs.APPCOMPAT)
+    implementation(Libs.MATERIAL)
+    implementation(Libs.CONSTRAINT_LAYOUT)
 
     // Lifecycle, LiveData, ViewModel
-    implementation(Deps.LIFECYCLE_EXTENSIONS)
+    implementation(Libs.LIFECYCLE_EXTENSIONS)
 
     addUnitTestDependencies()
 

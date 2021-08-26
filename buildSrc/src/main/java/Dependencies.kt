@@ -1,4 +1,4 @@
-object Deps {
+object Libs {
 
     const val KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib:${PluginVersion.KOTLIN_VERSION}"
 
@@ -115,11 +115,36 @@ object Deps {
 }
 
 object Compose {
-    const val COMPOSE_UI = "androidx.compose.ui:ui:${Version.COMPOSE_VERSION}"
-    const val COMPOSE_MATERIAL = "androidx.compose.material:material:${Version.COMPOSE_VERSION}"
-    const val COMPOSE_TOOLING = "androidx.compose.ui:ui-tooling-preview:${Version.COMPOSE_VERSION}"
-    const val COMPOSE_ACTIVITY =
-        "androidx.activity:activity-compose:${Version.COMPOSE_ACTIVITY_VERSION}"
+    const val FOUNDATION = "androidx.compose.foundation:foundation:${Version.COMPOSE_VERSION}"
+    const val LAYOUT = "androidx.compose.foundation:foundation-layout:${Version.COMPOSE_VERSION}"
+    const val UI = "androidx.compose.ui:ui:${Version.COMPOSE_VERSION}"
+    const val UI_UTIL = "androidx.compose.ui:ui-util:${Version.COMPOSE_VERSION}"
+    const val RUNTIME = "androidx.compose.runtime:runtime:${Version.COMPOSE_VERSION}"
+    const val MATERIAL = "androidx.compose.material:material:${Version.COMPOSE_VERSION}"
+    const val ANIMATION = "androidx.compose.animation:animation:${Version.COMPOSE_VERSION}"
+    const val TOOLING = "androidx.compose.ui:ui-tooling:${Version.COMPOSE_VERSION}"
+    const val ICONS_EXTENDED =
+        "androidx.compose.material:material-icons-extended:${Version.COMPOSE_VERSION}"
+    const val uiTest = "androidx.compose.ui:ui-test-junit4:${Version.COMPOSE_VERSION}"
+
+    object Activity {
+        const val activityCompose =
+            "androidx.activity:activity-compose:${Version.COMPOSE_ACTIVITY_VERSION}"
+    }
+
+    object Lifecycle {
+        const val viewModelCompose =
+            "androidx.lifecycle:lifecycle-viewmodel-compose:${Version.COMPOSE_VIEWMODEL_VERSION}"
+    }
+
+    object Navigation {
+        const val navigationCompose =
+            "androidx.navigation:navigation-compose:${Version.COMPOSE_NAVIGATION_VERSION}"
+    }
+
+    object Coil {
+        const val coilCompose = "io.coil-kt:coil-compose:${Version.COMPOSE_COIL_VERSION}"
+    }
 }
 
 object TestDeps {

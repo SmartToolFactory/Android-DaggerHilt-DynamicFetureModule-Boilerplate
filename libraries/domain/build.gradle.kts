@@ -55,25 +55,25 @@ dependencies {
 
     implementation(project(Modules.AndroidLibrary.DATA))
 
-    implementation(Deps.KOTLIN)
-    implementation(Deps.ANDROIDX_CORE_KTX)
+    implementation(Libs.KOTLIN)
+    implementation(Libs.ANDROIDX_CORE_KTX)
 
     // Dagger
-    implementation(Deps.DAGGER_HILT_ANDROID)
-    kapt(Deps.DAGGER_HILT_COMPILER)
+    implementation(Libs.DAGGER_HILT_ANDROID)
+    kapt(Libs.DAGGER_HILT_COMPILER)
 
     // RxJava
-    implementation(Deps.RX_JAVA3)
+    implementation(Libs.RX_JAVA3)
     // RxAndroid
-    implementation(Deps.RX_JAVA3_ANDROID)
+    implementation(Libs.RX_JAVA3_ANDROID)
 
     // Coroutines
-    implementation(Deps.COROUTINES_CORE)
-    implementation(Deps.COROUTINES_ANDROID)
+    implementation(Libs.COROUTINES_CORE)
+    implementation(Libs.COROUTINES_ANDROID)
 
     testImplementation(project(Modules.AndroidLibrary.TEST_UTILS))
 
-    testImplementation(Deps.GSON)
+    testImplementation(Libs.GSON)
 
     addUnitTestDependencies()
     addInstrumentationTestDependencies()

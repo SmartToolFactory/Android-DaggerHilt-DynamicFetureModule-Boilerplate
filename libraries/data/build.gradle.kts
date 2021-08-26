@@ -101,40 +101,40 @@ dependencies {
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(Deps.KOTLIN)
-    implementation(Deps.ANDROIDX_CORE_KTX)
+    implementation(Libs.KOTLIN)
+    implementation(Libs.ANDROIDX_CORE_KTX)
 
     // Dagger
-    implementation(Deps.DAGGER_HILT_ANDROID)
-    kapt(Deps.DAGGER_HILT_COMPILER)
+    implementation(Libs.DAGGER_HILT_ANDROID)
+    kapt(Libs.DAGGER_HILT_COMPILER)
 
     // Room
-    implementation(Deps.ROOM_RUNTIME)
+    implementation(Libs.ROOM_RUNTIME)
     // For Kotlin use kapt instead of annotationProcessor
-    kapt(Deps.ROOM_COMPILER)
+    kapt(Libs.ROOM_COMPILER)
     // optional - Kotlin Extensions and Coroutines support for Room
-    implementation(Deps.ROOM_KTX)
+    implementation(Libs.ROOM_KTX)
     // optional - RxJava support for Room
-    implementation(Deps.ROOM_RXJAVA3)
+    implementation(Libs.ROOM_RXJAVA3)
 
     // RxJava
-    implementation(Deps.RX_JAVA3)
+    implementation(Libs.RX_JAVA3)
     // RxAndroid
-    implementation(Deps.RX_JAVA3_ANDROID)
+    implementation(Libs.RX_JAVA3_ANDROID)
 
     // Coroutines
-    implementation(Deps.COROUTINES_CORE)
-    implementation(Deps.COROUTINES_ANDROID)
+    implementation(Libs.COROUTINES_CORE)
+    implementation(Libs.COROUTINES_ANDROID)
 
     // Retrofit
-    implementation(Deps.RETROFIT)
-    implementation(Deps.RETROFIT_GSON_CONVERTER)
-    implementation(Deps.RETROFIT_RX_JAVA3_ADAPTER)
+    implementation(Libs.RETROFIT)
+    implementation(Libs.RETROFIT_GSON_CONVERTER)
+    implementation(Libs.RETROFIT_RX_JAVA3_ADAPTER)
 
     // Gson
-    implementation(Deps.GSON)
+    implementation(Libs.GSON)
     // Chucker
-    implementation(Deps.CHUCKER_DEBUG)
+    implementation(Libs.CHUCKER_DEBUG)
 
     addUnitTestDependencies()
     testImplementation(project(Modules.AndroidLibrary.TEST_UTILS))

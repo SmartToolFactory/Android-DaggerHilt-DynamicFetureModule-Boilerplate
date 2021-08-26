@@ -1,6 +1,6 @@
 object PluginVersion {
     const val KOTLIN_VERSION = "1.5.10"
-    const val GRADLE_VERSION = "7.0.0"
+    const val GRADLE_VERSION = "7.0.1"
 
     const val NAV_SAFE_ARGS_VERSION = "2.3.0"
     const val KTLINT_VERSION = "10.1.0"
@@ -9,7 +9,7 @@ object PluginVersion {
 
 object AndroidVersion {
     const val MIN_SDK_VERSION = 21
-    const val COMPILE_SDK_VERSION = 30
+    const val COMPILE_SDK_VERSION = 31
     const val TARGET_SDK_VERSION = COMPILE_SDK_VERSION
     const val VERSION_CODE = 1
     const val VERSION_NAME = "1.0.0"
@@ -95,6 +95,9 @@ object Version {
     // Compose
     const val COMPOSE_VERSION ="1.0.0"
     const val COMPOSE_ACTIVITY_VERSION="1.3.1"
+    const val COMPOSE_NAVIGATION_VERSION="2.4.0-alpha07"
+    const val COMPOSE_VIEWMODEL_VERSION="1.0.0-alpha07"
+    const val COMPOSE_COIL_VERSION = "1.3.2"
 }
 
 object TestVersion {

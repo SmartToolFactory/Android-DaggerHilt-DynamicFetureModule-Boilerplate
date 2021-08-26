@@ -1,7 +1,7 @@
 package extension
 
 import Compose
-import Deps
+import Libs
 import TestDeps
 import org.gradle.api.artifacts.Dependency
 import org.gradle.api.artifacts.ProjectDependency
@@ -12,116 +12,113 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
  */
 fun DependencyHandler.addAppModuleDependencies() {
 
-    implementation(Deps.KOTLIN)
-    implementation(Deps.ANDROIDX_CORE_KTX)
+    implementation(Libs.KOTLIN)
+    implementation(Libs.ANDROIDX_CORE_KTX)
 
     // Support and Widgets
-    implementation(Deps.APPCOMPAT)
-    implementation(Deps.MATERIAL)
-    implementation(Deps.CONSTRAINT_LAYOUT)
-    implementation(Deps.RECYCLER_VIEW)
-    implementation(Deps.VIEWPAGER2)
-    implementation(Deps.SWIPE_REFRESH_LAYOUT)
+    implementation(Libs.APPCOMPAT)
+    implementation(Libs.MATERIAL)
+    implementation(Libs.CONSTRAINT_LAYOUT)
+    implementation(Libs.RECYCLER_VIEW)
+    implementation(Libs.VIEWPAGER2)
+    implementation(Libs.SWIPE_REFRESH_LAYOUT)
 
     // Views, Animations
-    implementation(Deps.LOTTIE)
+    implementation(Libs.LOTTIE)
 
     // Lifecycle, LiveData, ViewModel
-    implementation(Deps.LIFECYCLE_LIVEDATA_KTX)
-    implementation(Deps.LIFECYCLE_VIEWMODEL_KTX)
-    implementation(Deps.LIFECYCLE_EXTENSIONS)
+    implementation(Libs.LIFECYCLE_LIVEDATA_KTX)
+    implementation(Libs.LIFECYCLE_VIEWMODEL_KTX)
+    implementation(Libs.LIFECYCLE_EXTENSIONS)
 
     // Navigation Components
-    implementation(Deps.NAVIGATION_FRAGMENT)
-    implementation(Deps.NAVIGATION_UI)
-    implementation(Deps.NAVIGATION_RUNTIME)
-    implementation(Deps.NAVIGATION_DYNAMIC)
+    implementation(Libs.NAVIGATION_FRAGMENT)
+    implementation(Libs.NAVIGATION_UI)
+    implementation(Libs.NAVIGATION_RUNTIME)
+    implementation(Libs.NAVIGATION_DYNAMIC)
 
     // Dagger Hilt
-    implementation(Deps.DAGGER_HILT_ANDROID)
-    kapt(Deps.DAGGER_HILT_COMPILER)
+    implementation(Libs.DAGGER_HILT_ANDROID)
+    kapt(Libs.DAGGER_HILT_COMPILER)
 
 
     // RxJava
-    implementation(Deps.RX_JAVA3)
+    implementation(Libs.RX_JAVA3)
     // RxAndroid
-    implementation(Deps.RX_JAVA3_ANDROID)
+    implementation(Libs.RX_JAVA3_ANDROID)
 
     // Coroutines
-    implementation(Deps.COROUTINES_CORE)
-    implementation(Deps.COROUTINES_ANDROID)
+    implementation(Libs.COROUTINES_CORE)
+    implementation(Libs.COROUTINES_ANDROID)
 
     // Leak Canary
-    debugImplementation(Deps.LEAK_CANARY)
+    debugImplementation(Libs.LEAK_CANARY)
 
     // Room
-    implementation(Deps.ROOM_RUNTIME)
+    implementation(Libs.ROOM_RUNTIME)
     // For Kotlin use kapt instead of annotationProcessor
-    kapt(Deps.ROOM_COMPILER)
+    kapt(Libs.ROOM_COMPILER)
     // optional - Kotlin Extensions and Coroutines support for Room
-    implementation(Deps.ROOM_KTX)
+    implementation(Libs.ROOM_KTX)
     // optional - RxJava support for Room
-    implementation(Deps.ROOM_RXJAVA3)
+    implementation(Libs.ROOM_RXJAVA3)
 
     // Retrofit
-    implementation(Deps.RETROFIT)
-    implementation(Deps.RETROFIT_GSON_CONVERTER)
-    implementation(Deps.RETROFIT_RX_JAVA3_ADAPTER)
+    implementation(Libs.RETROFIT)
+    implementation(Libs.RETROFIT_GSON_CONVERTER)
+    implementation(Libs.RETROFIT_RX_JAVA3_ADAPTER)
     // change base url runtime
 //    implementation(Deps.RETROFIT_URL_MANAGER)
     // Gson
-    implementation(Deps.GSON)
-    implementation(Deps.CHUCKER_DEBUG)
+    implementation(Libs.GSON)
+    implementation(Libs.CHUCKER_DEBUG)
 
     // Glide
-    implementation(Deps.GLIDE)
-    kapt(Deps.GLIDE_COMPILER)
+    implementation(Libs.GLIDE)
+    kapt(Libs.GLIDE_COMPILER)
 
     // Compose
-    implementation(Compose.COMPOSE_UI)
-    implementation(Compose.COMPOSE_MATERIAL)
-    implementation(Compose.COMPOSE_TOOLING)
-    implementation(Compose.COMPOSE_ACTIVITY)
+    addComposeDependencies()
 }
 
 /**
  * Adds dependencies to core module
  */
 fun DependencyHandler.addCoreModuleDependencies() {
-    implementation(Deps.KOTLIN)
-    implementation(Deps.ANDROIDX_CORE_KTX)
+    implementation(Libs.KOTLIN)
+    implementation(Libs.ANDROIDX_CORE_KTX)
 
     // Support and Widgets
-    implementation(Deps.APPCOMPAT)
-    implementation(Deps.MATERIAL)
-    implementation(Deps.CONSTRAINT_LAYOUT)
-    implementation(Deps.RECYCLER_VIEW)
-    implementation(Deps.VIEWPAGER2)
-    implementation(Deps.SWIPE_REFRESH_LAYOUT)
+    implementation(Libs.APPCOMPAT)
+    implementation(Libs.MATERIAL)
+    implementation(Libs.CONSTRAINT_LAYOUT)
+    implementation(Libs.RECYCLER_VIEW)
+    implementation(Libs.VIEWPAGER2)
+    implementation(Libs.SWIPE_REFRESH_LAYOUT)
 
     // Lifecycle, LiveData, ViewModel
-    implementation(Deps.LIFECYCLE_LIVEDATA_KTX)
-    implementation(Deps.LIFECYCLE_VIEWMODEL_KTX)
-    implementation(Deps.LIFECYCLE_EXTENSIONS)
+    implementation(Libs.LIFECYCLE_LIVEDATA_KTX)
+    implementation(Libs.LIFECYCLE_VIEWMODEL_KTX)
+    implementation(Libs.LIFECYCLE_EXTENSIONS)
 
     // Navigation Components
-    implementation(Deps.NAVIGATION_FRAGMENT)
-    implementation(Deps.NAVIGATION_UI)
-    implementation(Deps.NAVIGATION_RUNTIME)
-    implementation(Deps.NAVIGATION_DYNAMIC)
+    implementation(Libs.NAVIGATION_FRAGMENT)
+    implementation(Libs.NAVIGATION_UI)
+    implementation(Libs.NAVIGATION_RUNTIME)
+    implementation(Libs.NAVIGATION_DYNAMIC)
 
     // Dagger
-    implementation(Deps.DAGGER_HILT_ANDROID)
-    kapt(Deps.DAGGER_HILT_COMPILER)
+    implementation(Libs.DAGGER_HILT_ANDROID)
+    kapt(Libs.DAGGER_HILT_COMPILER)
 
     // RxJava
-    implementation(Deps.RX_JAVA3)
+    implementation(Libs.RX_JAVA3)
     // RxAndroid
-    implementation(Deps.RX_JAVA3_ANDROID)
+    implementation(Libs.RX_JAVA3_ANDROID)
 
     // Coroutines
-    implementation(Deps.COROUTINES_CORE)
-    implementation(Deps.COROUTINES_ANDROID)
+    implementation(Libs.COROUTINES_CORE)
+    implementation(Libs.COROUTINES_ANDROID)
 }
 
 /**
@@ -130,32 +127,51 @@ fun DependencyHandler.addCoreModuleDependencies() {
  *
  */
 fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
-    implementation(Deps.KOTLIN)
-    implementation(Deps.ANDROIDX_CORE_KTX)
+    implementation(Libs.KOTLIN)
+    implementation(Libs.ANDROIDX_CORE_KTX)
 
     // Lifecycle, LiveData, ViewModel
-    implementation(Deps.LIFECYCLE_LIVEDATA_KTX)
-    implementation(Deps.LIFECYCLE_VIEWMODEL_KTX)
-    implementation(Deps.LIFECYCLE_EXTENSIONS)
+    implementation(Libs.LIFECYCLE_LIVEDATA_KTX)
+    implementation(Libs.LIFECYCLE_VIEWMODEL_KTX)
+    implementation(Libs.LIFECYCLE_EXTENSIONS)
 
     // Navigation Components
-    implementation(Deps.NAVIGATION_FRAGMENT)
-    implementation(Deps.NAVIGATION_UI)
-    implementation(Deps.NAVIGATION_RUNTIME)
-    implementation(Deps.NAVIGATION_DYNAMIC)
+    implementation(Libs.NAVIGATION_FRAGMENT)
+    implementation(Libs.NAVIGATION_UI)
+    implementation(Libs.NAVIGATION_RUNTIME)
+    implementation(Libs.NAVIGATION_DYNAMIC)
 
     // Dagger Hilt
-    implementation(Deps.DAGGER_HILT_ANDROID)
-    kapt(Deps.DAGGER_HILT_COMPILER)
+    implementation(Libs.DAGGER_HILT_ANDROID)
+    kapt(Libs.DAGGER_HILT_COMPILER)
 
     // RxJava
-    implementation(Deps.RX_JAVA3)
+    implementation(Libs.RX_JAVA3)
     // RxAndroid
-    implementation(Deps.RX_JAVA3_ANDROID)
+    implementation(Libs.RX_JAVA3_ANDROID)
 
     // Coroutines
-    implementation(Deps.COROUTINES_CORE)
-    implementation(Deps.COROUTINES_ANDROID)
+    implementation(Libs.COROUTINES_CORE)
+    implementation(Libs.COROUTINES_ANDROID)
+
+    // Compose
+    addComposeDependencies()
+}
+
+fun DependencyHandler.addComposeDependencies() {
+    implementation(Compose.FOUNDATION)
+    implementation(Compose.LAYOUT)
+    implementation(Compose.UI)
+    implementation(Compose.UI_UTIL)
+    implementation(Compose.RUNTIME)
+    implementation(Compose.MATERIAL)
+    implementation(Compose.ANIMATION)
+    implementation(Compose.TOOLING)
+    implementation(Compose.ICONS_EXTENDED)
+    implementation(Compose.Activity.activityCompose)
+//    implementation(Compose.Lifecycle.viewModelCompose)
+//    implementation(Compose.Navigation.navigationCompose)
+    implementation(Compose.Coil.coilCompose)
 }
 
 /**

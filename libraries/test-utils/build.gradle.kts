@@ -51,16 +51,16 @@ dependencies {
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(Deps.KOTLIN)
-    implementation(Deps.ANDROIDX_CORE_KTX)
+    implementation(Libs.KOTLIN)
+    implementation(Libs.ANDROIDX_CORE_KTX)
 
-    implementation(Deps.COROUTINES_CORE)
-    implementation(Deps.COROUTINES_ANDROID)
+    implementation(Libs.COROUTINES_CORE)
+    implementation(Libs.COROUTINES_ANDROID)
 
     // Lifecycle, LiveData, ViewModel
-    implementation(Deps.LIFECYCLE_LIVEDATA_KTX)
-    implementation(Deps.LIFECYCLE_VIEWMODEL_KTX)
-    implementation(Deps.LIFECYCLE_EXTENSIONS)
+    implementation(Libs.LIFECYCLE_LIVEDATA_KTX)
+    implementation(Libs.LIFECYCLE_VIEWMODEL_KTX)
+    implementation(Libs.LIFECYCLE_EXTENSIONS)
 
 //    implementation(TestDeps.ANDROIDX_CORE_KTX)
 //    implementation(TestDeps.ANDROIDX_CORE_TESTING)
@@ -69,7 +69,7 @@ dependencies {
     implementation(TestDeps.JUNIT5_ENGINE)
 
     // GSon
-    implementation(Deps.GSON)
+    implementation(Libs.GSON)
 
     // Coroutines Test
     implementation(TestDeps.COROUTINES_TEST)
