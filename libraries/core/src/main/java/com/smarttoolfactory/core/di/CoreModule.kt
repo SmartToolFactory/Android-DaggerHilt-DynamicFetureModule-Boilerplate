@@ -12,9 +12,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 
 @InstallIn(SingletonComponent::class)
-@Module
+@Module(includes = [DataModule::class])
 class CoreModule {
 
+    @Singleton
     @Provides
     fun provideCoreDependency() = CoreDependency()
 
@@ -22,6 +23,7 @@ class CoreModule {
     @Provides
     fun provideCoroutineScope() = CoroutineScope(Dispatchers.Main.immediate + SupervisorJob())
 
+    @Singleton
     @Provides
     fun provideUseCaseDispatchers(): UseCaseDispatchers {
         return UseCaseDispatchers(Dispatchers.IO, Dispatchers.Default, Dispatchers.Main)

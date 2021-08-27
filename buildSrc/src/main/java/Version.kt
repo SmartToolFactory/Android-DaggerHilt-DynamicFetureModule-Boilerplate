@@ -49,9 +49,6 @@ object Version {
     // Retrofit
     const val RETROFIT_VERSION = "2.9.0"
 
-    // Retrofit RxJava3 Adapter
-    const val RETROFIT_RXJAVA3_ADAPTER ="2.9.0"
-
     // OkHttpClient
     const val OK_HTTP3_VERSION = "4.9.0"
 
@@ -63,10 +60,6 @@ object Version {
 
     // Dagger
     const val DAGGER_VERSION = "2.38.1"
-
-    // RxJava3
-    const val RX_JAVA3_VERSION = "3.0.0"
-    const val RX_JAVA3_ANDROID_VERSION = "3.0.0"
 
     // Coroutines
     const val COROUTINES_VERSION = "1.5.0"

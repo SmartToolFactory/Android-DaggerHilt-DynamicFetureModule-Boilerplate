@@ -41,12 +41,6 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(Libs.DAGGER_HILT_ANDROID)
     kapt(Libs.DAGGER_HILT_COMPILER)
 
-
-    // RxJava
-    implementation(Libs.RX_JAVA3)
-    // RxAndroid
-    implementation(Libs.RX_JAVA3_ANDROID)
-
     // Coroutines
     implementation(Libs.COROUTINES_CORE)
     implementation(Libs.COROUTINES_ANDROID)
@@ -60,15 +54,11 @@ fun DependencyHandler.addAppModuleDependencies() {
     kapt(Libs.ROOM_COMPILER)
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation(Libs.ROOM_KTX)
-    // optional - RxJava support for Room
-    implementation(Libs.ROOM_RXJAVA3)
 
     // Retrofit
     implementation(Libs.RETROFIT)
     implementation(Libs.RETROFIT_GSON_CONVERTER)
-    implementation(Libs.RETROFIT_RX_JAVA3_ADAPTER)
-    // change base url runtime
-//    implementation(Deps.RETROFIT_URL_MANAGER)
+
     // Gson
     implementation(Libs.GSON)
     implementation(Libs.CHUCKER_DEBUG)
@@ -111,11 +101,6 @@ fun DependencyHandler.addCoreModuleDependencies() {
     implementation(Libs.DAGGER_HILT_ANDROID)
     kapt(Libs.DAGGER_HILT_COMPILER)
 
-    // RxJava
-    implementation(Libs.RX_JAVA3)
-    // RxAndroid
-    implementation(Libs.RX_JAVA3_ANDROID)
-
     // Coroutines
     implementation(Libs.COROUTINES_CORE)
     implementation(Libs.COROUTINES_ANDROID)
@@ -144,11 +129,6 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
     // Dagger Hilt
     implementation(Libs.DAGGER_HILT_ANDROID)
     kapt(Libs.DAGGER_HILT_COMPILER)
-
-    // RxJava
-    implementation(Libs.RX_JAVA3)
-    // RxAndroid
-    implementation(Libs.RX_JAVA3_ANDROID)
 
     // Coroutines
     implementation(Libs.COROUTINES_CORE)

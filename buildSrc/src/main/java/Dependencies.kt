@@ -50,14 +50,6 @@ object Libs {
     const val DAGGER_HILT_COMPILER =
         "com.google.dagger:hilt-android-compiler:${Version.DAGGER_VERSION}"
 
-
-    // RxJava3
-    const val RX_JAVA3 = "io.reactivex.rxjava3:rxjava:${Version.RX_JAVA3_VERSION}"
-
-    // RxJava3 Android
-    const val RX_JAVA3_ANDROID =
-        "io.reactivex.rxjava3:rxandroid:${Version.RX_JAVA3_ANDROID_VERSION}"
-
     // Coroutines
     const val COROUTINES_CORE =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.COROUTINES_VERSION}"
@@ -68,9 +60,7 @@ object Libs {
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${Version.RETROFIT_VERSION}"
     const val RETROFIT_GSON_CONVERTER =
         "com.squareup.retrofit2:converter-gson:${Version.RETROFIT_VERSION}"
-    const val RETROFIT_RX_JAVA2_ADAPTER = "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0"
-    const val RETROFIT_RX_JAVA3_ADAPTER =
-        "com.squareup.retrofit2:adapter-rxjava3:${Version.RETROFIT_RXJAVA3_ADAPTER}"
+
 
     // Retrofit change base url runtime
     const val RETROFIT_URL_MANAGER = "me.jessyan:retrofit-url-manager:1.4.0"
@@ -88,10 +78,6 @@ object Libs {
 
     // optional - Kotlin Extensions and Coroutines support for Room
     const val ROOM_KTX = "androidx.room:room-ktx:${Version.ROOM_VERSION}"
-
-    // optional - RxJava support for Room
-    const val ROOM_RXJAVA2 = "androidx.room:room-rxjava2:${Version.ROOM_VERSION}"
-    const val ROOM_RXJAVA3 = "androidx.room:room-rxjava3:${Version.ROOM_VERSION}"
 
     // glide
     const val GLIDE = "com.github.bumptech.glide:glide:${Version.GLIDE_VERSION}"

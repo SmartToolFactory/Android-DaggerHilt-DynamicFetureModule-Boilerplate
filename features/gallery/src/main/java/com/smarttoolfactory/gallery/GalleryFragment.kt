@@ -11,6 +11,7 @@ import com.smarttoolfactory.core.di.CoreModuleDependencies
 import com.smarttoolfactory.gallery.databinding.FragmentGalleryBinding
 import com.smarttoolfactory.gallery.di.DaggerGalleryComponent
 import com.smarttoolfactory.gallery.model.GalleryDependency
+import com.smarttoolfactory.gallery.viewmodel.FeatureViewModel
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
@@ -28,7 +29,11 @@ class GalleryFragment : Fragment() {
     @Inject
     lateinit var galleryDependency: GalleryDependency
 
+    @Inject
+    lateinit var featureViewModel: FeatureViewModel
+
     private var _binding: FragmentGalleryBinding? = null
+
     // This property is only valid between onCreateView and
 // onDestroyView.
     private val binding get() = _binding!!
@@ -61,8 +66,9 @@ class GalleryFragment : Fragment() {
         )
 
         DaggerGalleryComponent.factory().create(
-            coreModuleDependencies,
-            requireActivity().application
+            coreModuleDependencies = coreModuleDependencies,
+            application = requireActivity().application,
+            fragment = this
         )
             .inject(this)
     }

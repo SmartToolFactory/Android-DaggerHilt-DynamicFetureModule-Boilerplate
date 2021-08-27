@@ -1,10 +1,10 @@
- package com.smarttoolfactory.core.ui.fragment
 
+package com.smarttoolfactory.core.ui.fragment
 
- import androidx.viewbinding.ViewBinding
- import androidx.fragment.app.Fragment
+import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 
- /**
+/**
  * BaseFragment to avoid writing data-binding code over again for each fragment.
  *
  * Generic approach forces Fragments to have specified number of ViewModels if added as generic parameter
@@ -23,16 +23,15 @@
  * * onDestroy()
  * * onDetach()
  */
- abstract class BaseViewBindingFragment : Fragment() {
+abstract class BaseViewBindingFragment : Fragment() {
 
     /**
      * Generic nullable [ViewBinding] that is set to null in [BaseFragment.onDestroyView]
      */
-    internal var _binding: ViewBinding? = null
+    internal var binding: ViewBinding? = null
 
     override fun onDestroyView() {
-        _binding = null
+        binding = null
         super.onDestroyView()
     }
-
- }
+}

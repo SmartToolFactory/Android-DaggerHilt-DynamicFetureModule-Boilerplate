@@ -27,6 +27,9 @@ import kotlin.reflect.KProperty
  * Requires a [FragmentFactory] to be able to create this fragment which does not posses
  * an empty constructor.
  *
+ * ## Note:
+ * Can be used to create fragments with their own backstack which is usable with **ViewPager2**
+ *
  */
 class NavHostContainerFragment() : Fragment() {
 

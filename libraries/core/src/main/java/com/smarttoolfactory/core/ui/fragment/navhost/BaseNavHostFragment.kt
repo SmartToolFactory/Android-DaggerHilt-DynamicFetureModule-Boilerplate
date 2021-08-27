@@ -15,6 +15,8 @@ import com.smarttoolfactory.core.viewmodel.NavControllerViewModel
  *
  * ### Parameter keys are taken from [NavHostFragment] so it's not necessary to
  *  call onCreate to set current graph. [NavHostFragment] takes care of setting navigation graph.
+ *
+ * Can used with BottomNavigationView to create tabs that directly go to fragments
  */
 class BaseNavHostFragment : NavHostFragment() {
 

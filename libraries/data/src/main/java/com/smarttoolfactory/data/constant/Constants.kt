@@ -5,7 +5,7 @@ package com.smarttoolfactory.data.constant
  */
 
 // Base Url
-const val BASE_URL = ""
+const val BASE_URL = "http://www.example.com/"
 
 /*
     DBConstants

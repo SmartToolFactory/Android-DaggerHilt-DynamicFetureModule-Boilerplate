@@ -1,16 +1,20 @@
-# Boilerplate for creating project with MVVM, Dagger Hilt, Dynamic Feature Modules
+# Boilerplate for creating project with MVVM, Jetpack Compose, Dagger Hilt, Dynamic Feature Modules
 
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.0-blue.svg)](https://kotlinlang.org)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
 
-This is a boilerplate code to use when creating a project not to repeat same process over again when starting a new project. Folders are created, dependies and libraries are set up
-to create a requirements when starting a new project.
+This is a boilerplate code to use not to repeat same process over again when starting a new project. Folders are created, dependencies and libraries are set up.
+
+Main branch has no DataSource, Repository or ViewModel classes. Checkout coroutines-flow
+or compose branch. Data module in these branches
+contain fake dao, local and remote data source, repository, mapper.
+
 
 * Gradle Kotlin DSL is used for setting up gradle files with ```buildSrc``` folder and extensions.
 * KtLint, Detekt, and Git Hooks is used for checking, and formatting code and validating code before commits.
-* Dagger Hilt, Dynamic Feature Modules with Navigation Components, ViewModel, Retrofit, Room, RxJava, Coroutines libraries adn dependencies are set up.
+* Dagger Hilt, Dynamic Feature Modules with Navigation Components, ViewModel, Retrofit, Room, Coroutines libraries adn dependencies are set up.
 * ```features``` and ```libraries``` folders are used to include android libraries and dynamic feature modules
 * In core module dagger hilt dependencies and ```@EntryPoint``` is created
 * test-utils module for shared folder for tes and androidTest folders, LiveDataObserver and FlowObserver.
@@ -67,7 +71,7 @@ which calls in order
 2. runs detekt for static code analysis
 3. ktlintCheck to check code,
 
-if after these tasks status is 0 then commit is successul, otherwise you need to check out console for links to your code and fix those errors.
+if after these tasks status is 0 then commit is successful, otherwise you need to check out console for links to your code and fix those errors.
 
 
 Steps taken to migrate to Gradle with Kotlin
@@ -146,7 +150,7 @@ fun DependencyHandler.addCoreModuleDependencies() {
 
 *Module heierarchy*
 ```
-     --> gallery module(dynamic featature module)
+     --> feature module(dynamic featature module)
      |    |
      |  app module <-<----
      |    |          |   |
@@ -161,10 +165,10 @@ fun DependencyHandler.addCoreModuleDependencies() {
 ```
 
 ### Data Module
-Data module is empty to create repository, database and REST apis, or cache implementations. This layer only has RxJavaExtension class
+Data module is empty to create repository, database and REST apis, or cache implementations.
 
 ### Domain Module
-Domain module is for usecase or interactor to contatain business logic.
+Domain module is for UseCase or Interactor to contain business logic.
 
 ### Core Module
 Core module can be used for containing libraries and other android related stuff. It only contains *CoreModule* and **CoreModuleDependencies**
@@ -174,7 +178,7 @@ for adding *dependent components* to dynamic feature modules or app module if re
 Main app with Application that uses @DaggerHiltApp, you can build your app in this module
 
 ### Dynamic Feature Modules
-Modules for seperating fetaure from app to prevent app being monolithic and having parallel gradle builds
+Modules for separating feature from app to prevent app being monolithic and having parallel gradle builds
 
 ### test-utils Module
 Module ready for unit-testing with libraries and extensions to be used in every module
@@ -197,10 +201,10 @@ And navigation folder should contain navigation graph with
 
     <!-- dynamic feature module-->
     <include-dynamic
-        android:id="@+id/nav_graph_gallery"
-        android:name="com.smarttoolfactory.gallery"
-        app:graphResName="nav_graph_gallery"
-        app:moduleName="gallery">
+        android:id="@+id/nav_graph_feature"
+        android:name="com.smarttoolfactory.feature"
+        app:graphResName="nav_graph_feature"
+        app:moduleName="feature">
 
         <argument
             android:name="count"
@@ -222,8 +226,8 @@ In nav_graph_gallery.xml
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@id/nav_graph_gallery"
-    app:moduleName="gallery"
+    android:id="@id/nav_graph_feature"
+    app:moduleName="feature"
     app:startDestination="@id/galleryFragment">
     <fragment
         android:id="@+id/galleryFragment"
@@ -272,7 +276,7 @@ Application class only need to use  ```@HiltAndroidApp``` annotation
 Activity should use ```@AndroidEntryPoint```annotation
 
 ### Core Module
-Core module should have provision methods for dependecies to be injected in core module to any other dependent module
+Core module should have provision methods for dependencies to be injected in core module to any other dependent module
 
 ```
 @EntryPoint
@@ -289,7 +293,7 @@ interface CoreModuleDependencies {
 
 ### Dynamic Feature Modules
 
-Modules that depend on core module shoud create a component, that depends on core module, with
+Modules that depend on core module should create a component, that depends on core module, with
 
 ```
 @Component(
@@ -310,7 +314,7 @@ interface GalleryComponent {
 }
 ```
 
-And creat this component in a ```Fragment``` or ```Activity``` using
+And create this component in a ```Fragment``` or ```Activity``` using
 
 ```
         val coreModuleDependencies = EntryPointAccessors.fromApplication(

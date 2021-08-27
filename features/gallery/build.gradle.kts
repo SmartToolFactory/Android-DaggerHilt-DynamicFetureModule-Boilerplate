@@ -52,6 +52,7 @@ dependencies {
 
     implementation(project(Modules.APP))
     implementation(project(Modules.AndroidLibrary.CORE))
+    implementation(project(Modules.AndroidLibrary.DOMAIN))
 
     addBaseDynamicFeatureModuleDependencies()
 

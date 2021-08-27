@@ -114,13 +114,6 @@ dependencies {
     kapt(Libs.ROOM_COMPILER)
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation(Libs.ROOM_KTX)
-    // optional - RxJava support for Room
-    implementation(Libs.ROOM_RXJAVA3)
-
-    // RxJava
-    implementation(Libs.RX_JAVA3)
-    // RxAndroid
-    implementation(Libs.RX_JAVA3_ANDROID)
 
     // Coroutines
     implementation(Libs.COROUTINES_CORE)
@@ -129,7 +122,6 @@ dependencies {
     // Retrofit
     implementation(Libs.RETROFIT)
     implementation(Libs.RETROFIT_GSON_CONVERTER)
-    implementation(Libs.RETROFIT_RX_JAVA3_ADAPTER)
 
     // Gson
     implementation(Libs.GSON)

@@ -12,7 +12,10 @@ import com.smarttoolfactory.core.viewmodel.NavControllerViewModel
 /**
  * [DynamicNavHostFragment] creator class which
  * uses [BaseDynamicNavHostFragment.createDynamicNavHostFragment] function with navigation graph
- * parameter
+ * parameter.
+ *
+ * Can used with BottomNavigationView to create tabs that directly go to fragments in
+ * dynamic feature modules
  */
 class BaseDynamicNavHostFragment : NavHostFragment() {
 
