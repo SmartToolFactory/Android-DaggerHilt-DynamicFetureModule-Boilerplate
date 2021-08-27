@@ -56,7 +56,7 @@ object Version {
     const val GSON_VERSION = "2.8.7"
 
     // Room
-    const val ROOM_VERSION = "2.4.0-alpha02"
+    const val ROOM_VERSION = "2.4.0-alpha04"
 
     // Dagger
     const val DAGGER_VERSION = "2.38.1"
