@@ -45,8 +45,8 @@ class MainFragment : DynamicNavigationFragment() {
             "CoreModule @Singleton coreDependency: ${coreDependency.hashCode()}\n" +
             "mainViewModel: ${mainViewModel.hashCode()}"
 
-        binding.btnGallery.setOnClickListener {
-            findNavController().navigate(R.id.nav_graph_gallery)
+        binding.btnFeature.setOnClickListener {
+            findNavController().navigate(R.id.nav_graph_feature)
         }
     }
 

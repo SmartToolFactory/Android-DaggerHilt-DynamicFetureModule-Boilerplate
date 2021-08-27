@@ -108,7 +108,7 @@ android {
     }
 
     dynamicFeatures.apply {
-        add(Modules.DynamicFeature.GALLERY)
+        add(Modules.DynamicFeature.FEATURE)
     }
 
     testOptions {

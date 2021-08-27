@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/nav_graph_feature"
+    app:moduleName="feature"
+    app:startDestination="@id/featureFragment">
+    <fragment
+        android:id="@+id/featureFragment"
+        android:name="com.smarttoolfactory.feature.FeatureFragment"
+        android:label="Feature Fragment"
+        tools:layout="@layout/fragment_feature" />
+</navigation>

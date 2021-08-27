@@ -13,6 +13,6 @@ object Modules {
      * Dynamic Feature Modules
      */
     object DynamicFeature {
-        const val GALLERY = ":features:gallery"
+        const val FEATURE = ":features:feature"
     }
 }

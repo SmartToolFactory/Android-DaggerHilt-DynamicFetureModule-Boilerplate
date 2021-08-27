@@ -214,13 +214,13 @@ And navigation folder should contain navigation graph with
 
 There are 3 important properties that should be carefully added to main graph for not receiving error
 
-1. id of the navigation,``` android:id="@+id/nav_graph_gallery"```, should be same with the dynamic feature id
-2. ```graphResName``` is the name of the navigation folder which is nav_graph_gallery.xml for this boilerplate
+1. id of the navigation,``` android:id="@+id/nav_graph_feature"```, should be same with the dynamic feature id
+2. ```graphResName``` is the name of the navigation folder which is nav_graph_feature.xml for this boilerplate
 3. module name should be exactly same name dynamic feature module is named.
 
 
 ### Dynamic Feature Module navigation graph
-In nav_graph_gallery.xml
+In nav_graph_feature.xml
 
 ```
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
@@ -228,12 +228,12 @@ In nav_graph_gallery.xml
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@id/nav_graph_feature"
     app:moduleName="feature"
-    app:startDestination="@id/galleryFragment">
+    app:startDestination="@id/featureFragment">
     <fragment
-        android:id="@+id/galleryFragment"
-        android:name="com.smarttoolfactory.gallery.GalleryFragment"
-        android:label="GalleryFragment"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/featureFragment"
+        android:name="com.smarttoolfactory.feature.FeatureFragment"
+        android:label="FeatureFragment"
+        tools:layout="@layout/fragment_feature" />
 </navigation>
 ```
 
@@ -298,18 +298,18 @@ Modules that depend on core module should create a component, that depends on co
 ```
 @Component(
     dependencies = [CoreModuleDependencies::class],
-    modules = [GalleryModule::class]
+    modules = [FeatureModule::class]
 )
-interface GalleryComponent {
+interface FeatureComponent {
 
-    fun inject(galleryFragment: GalleryFragment)
+    fun inject(featureFragment: FeatureFragment)
 
     @Component.Factory
     interface Factory {
         fun create(
             coreModuleDependencies: CoreModuleDependencies,
             @BindsInstance application: Application
-        ): GalleryComponent
+        ): FeatureComponent
     }
 }
 ```
@@ -322,7 +322,7 @@ And create this component in a ```Fragment``` or ```Activity``` using
             CoreModuleDependencies::class.java
         )
 
-        DaggerGalleryComponent.factory().create(
+        DaggerFeatureComponent.factory().create(
             coreModuleDependencies,
             requireActivity().application
         )
