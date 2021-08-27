@@ -80,10 +80,10 @@ object Version {
     const val TIMBER_VERSION = "4.7.1"
 
     // Chucker
-    const val CHUCKER_VERSION ="3.4.0"
+    const val CHUCKER_VERSION ="3.5.2"
 
     // Leak Canary
-    const val LEAK_CANARY_VERSION = "2.4"
+    const val LEAK_CANARY_VERSION = "2.7"
 
     // Compose
     const val COMPOSE_VERSION ="1.0.0"
