@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.MutableLiveData
-import com.smarttoolfactory.core.util.observe
 import com.smarttoolfactory.projectboilerplate.ui.theme.SampleTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,10 +25,6 @@ class MainActivity : AppCompatActivity() {
 //                }
 //            }
 //        }
-
-        val data = MutableLiveData<String>()
-        observe(data) {
-        }
     }
 }
 
